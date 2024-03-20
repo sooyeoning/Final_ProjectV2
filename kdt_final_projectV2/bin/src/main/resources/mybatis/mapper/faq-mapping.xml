@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="faq.FaqMapper">
+
+<!-- 같은 여행지내 댓글 조회-->
+<select id="getComments" parameterType="int" resultType="CommentsDTO">
+	select*from comments where place_id=#{place_id} order by writingtime desc ; 
+</select>
+
+<!-- 댓글 저장
+<insert id="insertComments">
+	insert into comments(contents,place_id) values(#{contents},#{place_id});
+</insert>-->
+</mapper>
+
+
+
+
+
+

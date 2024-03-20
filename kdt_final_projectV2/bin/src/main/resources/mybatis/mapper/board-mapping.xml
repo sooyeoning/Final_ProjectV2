@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.spring.mybatis.BoardDAO">
+
+<!-- 글작성 -->
+<insert id="insertBoard" parameterType="boarddto" >
+ insert into board(id, title, contents, writingtime, views, likecount, board_title, writer, place) 
+ values(null, #{title}, #{contents}, now(), 0, 0, #{board_title}, #{writer}, #{place})
+</insert>
+
+<!-- 모든 Board 목록 가져오기 -->
+<select id="getAllBoards" resultType="boarddto">
+	SELECT * FROM board
+</select>
+
+<!-- Top 10 Board 목록 가져오기 -->
+<select id="getTop10Boards" resultType="boarddto">
+    SELECT * FROM board
+    ORDER BY likecount DESC
+    LIMIT 10
+</select>
+
+<!-- getBoardById 쿼리 매핑 -->
+<select id="getBoardById" parameterType="int" resultType="community.BoardDTO">
+	SELECT * FROM board WHERE id = #{boardId}
+</select>
+  
+<update id="updateBoard" parameterType="boarddto">
+	UPDATE board 
+	SET board_title = #{board_title}, place = #{place}, title = #{title}, contents = #{contents} 
+	WHERE id = #{id}
+</update>
+
+<delete id="deleteBoard" parameterType="boarddto">
+	DELETE FROM board WHERE id = #{id};
+</delete>
+
+
+</mapper>

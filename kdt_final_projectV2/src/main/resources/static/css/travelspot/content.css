@@ -1,0 +1,431 @@
+@charset "UTF-8";
+
+/*travelspot_main 페이지*/
+.titlebox {
+	width: 66%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	margin: 0 auto 10px;
+	border: solid 2px #2463d3;
+}
+
+.box { /*이미지 틀*/
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+    overflow: hidden; /*넘치는 부분은 감춘다*/
+}
+
+.profile { /*이미지*/
+    width: 100%; 
+    height: 100%; 
+  	object-fit: cover; /*비율 그대로 유지한채 이미지 가공*/    
+}
+
+.regionName{
+	display: flex;
+	justify-content: center;
+}
+
+.regionContainer {
+  width:66%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 2% 17% 0 17%;
+}
+
+.regionItem {
+  width: 28%; /* 3칸을 만들고 싶으면.. 26 ~ 33%로..*/
+  height: 245.76px;
+  margin: 10px 0 100px 0; /*행간 간격: 100px 조정*/
+}
+
+.regionItem-list { /*지역명 나열*/
+  width: 12%;
+  margin: 0 auto; /*행간 간격: 100px 조정*/
+}
+
+/*travelspot_list 페이지*/
+.box-list { /*6개 이미지 틀*/
+    border-radius: 70%;
+    height: 100%; /*동그라미*/
+	overflow: hidden; /*넘치는 부분은 감춘다*/
+}
+
+.placeprofile { /*장소이미지*/
+    width: 100%; 
+	height: 20vh;
+    object-fit: cover; /*비율 그대로 유지한채 이미지 가공*/    
+}
+
+.container {
+  width:66%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 2% 17% 0 17%;
+}
+
+.item {
+  width: 28%; /* 3칸을 만들고 싶으면.. 26 ~ 33%로..*/
+  height: 40vh;
+  padding-top: 5px;
+  margin: 0 0 50px 0; /*행간 간격: 100px 조정*/
+}
+
+.paging{
+	display:block;
+	text-align: center;
+}
+/* 관광명소 상세페이지 */
+.postmenu{
+display: flex;
+  justify-content: space-evenly;
+  margin: 5px 17% 5px 17%;
+}
+
+.margin{
+  margin: 2% 17% 5px 17%;  
+}
+
+.hrmargin{ /*상세페이지 메뉴바 구분선*/
+  margin: 1% 17% 1% 17%; 
+  border-top: 0.5px solid #2463d3;
+}
+
+.hrdetail{ /*여행지 상세정보 구분선*/
+  border-top: 0.3px solid #2463d3;
+}
+
+.pstyle{
+	font-weight: bold;
+}
+
+.result{ /*결과물 출력의 부모 요소*/
+margin: 5px 17% 5px 17%;  
+width: 66%;
+}
+
+.comments{ /*결과물 출력의 부모 요소*/ 
+width: 100%;
+}
+
+.myresult{ /*결과물 출력의 부모 요소*/
+margin: 5px 17% 5px 17%;  
+width: 66%;
+}
+
+.images{ /*결과물 출력의 자식 요소*/
+	display: block; /**/
+	width: 100%; /*부모 요소 너비의 100%*/
+	height: auto; /*기존 이미지가 가지고 있던 비율에 맞춰서 자동으로 높이 조절*/
+	margin: 15px 0; /*부모 요소 안받아?*/
+}
+
+.textarea-outerbox{ /*댓글창 바깥 상자*/
+	padding: 4vh 1.5vw 10vh 1.5vw;
+	border: solid 1px #2463d3;
+}
+
+.textarea-innerbox{ /*댓글 작성하는 textarea*/
+	resize: none;
+	padding: 1vw;
+	border: solid 1px #2463d3;
+	outline-color: #FE6B8B; /*텍스트창 클릭했을때(focus) 색상 변경*/
+	margin-top: 0.2vh;
+}
+
+.comment-textarea-innerbox{ /*댓글 작성하는 textarea*/
+	resize: none;
+	overflow: scroll;
+	padding: 1vw;
+	border-bottom: solid 1px #2463d3;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 60vw;
+	outline-color: #FE6B8B; /*텍스트창 클릭했을때(focus) 색상 변경*/
+	margin-bottom: 2%;
+}
+
+#contents{
+	margin-top: 3vh; /*다른 버전: 5vh;*/
+}
+.comments-outerbox{ /*작성된 댓글 보여주는 바깥 상자*/
+	width: 64vw;
+	height: fit-content;
+	padding: 1vw;
+	border-bottom: solid 1px #2463d3;
+}
+
+.comments-innerbox{ /*작성된 댓글 보여주는 안 상자*/
+	height: fit-content;
+}
+
+.comments-modify-outerbox{ /*작성된 댓글 보여주는 바깥 상자*/
+	width: 64vw;
+	height: fit-content;
+	padding: 1vw;
+	border-bottom: solid 1px #2463d3;
+}
+
+.comments-userinfo{
+	height: 40px;
+	display: flex;
+	align-items: center;
+	/*margin-bottom: 1.5vh; 프로필 아래 작성자 이름 버전*/
+}
+
+.savebutton{
+	width: 8vw;
+	text-align: center;
+	background-color: #2463d3;
+	border-radius: 4px;
+	border: none;
+	color: white; /*글씨색상*/
+	padding: 1%;
+	margin: 2vh 0.7vw 0 0;
+	float: right;/*오른쪽 끝 정렬*/
+}
+
+.deletebutton{
+	color: black; /*글씨색상*/
+	font-family: 'LeferiBaseType-RegularA';
+	background-color: white;
+    border: none;
+	width: 3vw;
+	text-align: center;
+	padding: 0 0.5vw 0 0.5vw;
+	margin-left: auto;
+}
+
+.modifybutton{
+	color: black; /*글씨색상*/
+	font-family: 'LeferiBaseType-RegularA';
+	background-color: white;
+    border: none;
+	width: 3vw;
+	text-align: center;
+	padding: 0 0.5vw 0 0.5vw;
+}
+
+
+.reportbutton{
+	color: black; /*글씨색상*/
+	font-family: 'LeferiBaseType-RegularA';
+	background-color: white;
+    border: none;
+	width: 3vw;
+	text-align: center;
+	padding: 0 0.5vw 0 0.5vw;
+}
+
+
+.modify_savebtn{
+	color: black; /*글씨색상*/
+	font-family: 'LeferiBaseType-RegularA';
+	background-color: white;
+    border: none;
+	width: 3vw;
+	text-align: center;
+	padding: 0 0.5vw 0 0.5vw;
+	float: right;
+	/*오른쪽 끝 정렬*/
+}
+
+.modify_cancelbtn{
+	color: black; /*글씨색상*/
+	font-family: 'LeferiBaseType-RegularA';
+	background-color: white;
+    border: none;
+	width: 3vw;
+	text-align: center;
+	margin: 0 1vw 0 0;
+	float: right;
+	/*오른쪽 끝 정렬*/
+}
+
+.clicked{
+	color:  #2463d3;
+}
+
+/* 테마별 장소리스트(list_theme) 페이지*/
+.themeContainer {
+  width:66vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 5vh 17vw 0 17vw;
+}
+
+.themeItem-list { /*지역명 나열*/
+  width: 10vw;
+  margin: 0 auto; /*행간 간격: 100px 조정*/
+  height: 5vh;
+}
+
+.pages{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.search-form {
+  display: flex;
+  float: right;
+  max-width: 30vw;
+  width:68%;
+  margin: 1% 17% 2% 0;
+}
+
+.search-input {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  flex: 1;
+  box-sizing: border-box;
+  width: 15vw;
+  height: 35px;
+  top: 158px;
+  background: #FFFFFF;
+  border: 1px solid #2463D3;
+}
+
+.search-button {
+  padding: 3px 8px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 5vw;
+  height: 35px;
+  top: 158px;
+  background: #2463D3;
+  font-size: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.search-label {
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.search-item {
+  width: 10vw;
+  height: 35px;
+  margin-right: 10px;
+  padding-left: 10px;
+  border-radius: 4px; 
+  font-size: 16px;  
+  border: 1px solid #2463D3;
+  background: url(/img/arrow.png) no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  /* for IE 11 */
+  display: none;
+}
+
+.themeName{
+	display: flex;
+	justify-content: center;
+	vertical-align: center;
+	height: 5vh;
+	color: #2463D3;
+	border-bottom: 1px solid #2463D3;
+}
+
+.comments-profile { /*6개 이미지 틀*/
+    border-radius: 70%;
+    height: 100%; /*동그라미*/
+	overflow: hidden; /*넘치는 부분은 감춘다*/
+	width:40px;
+	height:40px;
+	float: left;
+	border: 0.5px solid gray;
+	margin-right: 0.5vw;
+}
+
+/*댓글 신고 페이지*/
+#reportComment{
+	width: 66vw;
+	margin: 5vh auto 10vh;
+}
+
+.reporttitle{
+	margin-bottom: 2vh;
+	margin-top: 2vh;	
+}
+
+.readonly{
+	margin-bottom: 2.5vh;
+	margin-top: 1vh;
+	display: inline-block;
+	width: 10vw;
+}
+
+.readonlyinput{
+	font-size: 17px;
+	border-bottom: 1px solid #2463D3;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	margin-bottom: 2.5vh;
+	margin-top: 1vh;
+	padding: 0 0 0.5vh 0.5vw;
+	width: 55vw;
+	font-family: 'LeferiBaseType-RegularA';
+	
+}
+
+#reportCategory{
+	border: 1px solid #2463D3;
+	border-radius: 3px;
+	color: #2463D3;
+	padding: 0.1vh 0.3vw;
+	width: 14vw;
+	height: 6vh;
+}
+
+#reportcontents{
+	height: 20vh;
+	width: 63.5vw;
+	padding: 3vh 1vw;
+	border: solid 1px #2463D3;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: none;
+	font-family: 'LeferiBaseType-RegularA';
+}
+.reportConCon{
+	height: 20vh;
+	width: 63.5vw;
+	padding: 3vh 1vw;
+	border: solid 1px #2463D3;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: none;
+	font-family: 'LeferiBaseType-RegularA';
+}
+
+#share{
+	border: none;
+	background-color: white;
+	
+}
+
+
+  .parent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: fixed;
+      bottom: 5%;
+      right: -25vw; /*조정필요*/
+    }

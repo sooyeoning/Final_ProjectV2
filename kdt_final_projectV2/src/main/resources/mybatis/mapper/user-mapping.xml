@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User.UserDAO">
+	<!-- 회원가입 -->
+	<insert id="signup" parameterType="UserDTO">
+		INSERT INTO users
+		(id,
+		username,
+		nickname,userid,userpw,phone,email,mbti,address,detailAddress,postcode,extraAddress)
+		values
+		(#{id},#{username},#{nickname},#{userid},#{userpw},#{phone},#{email},#{mbti},#{address},#{detailAddress},#{postcode},#{extraAddress})
+	</insert>
+	<!-- 로그인 -->
+	<select id="findByUserId" parameterType="User.UserDTO"
+		resultType="User.UserDTO">
+		SELECT * FROM users WHERE userid = #{userid}
+	</select>
+	<!-- 회원정보 조회 -->
+	<select id="getUserById" resultType="User.UserDTO">
+		SELECT * FROM users WHERE id
+		= #{id}
+	</select>
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="UserDTO">
+		UPDATE users
+		SET username =
+		#{username},
+		nickname = #{nickname},
+		userid = #{userid},
+		userpw =
+		#{userpw},
+		phone = #{phone},
+		email = #{email},
+		mbti = #{mbti},
+		postcode=#{postcode},
+		address =
+		#{address},
+		detailAddress =
+		#{detailAddress},
+		extraAddress = #{extraAddress},
+		photo = #{photo}
+		WHERE
+		id = #{id}
+	</update>
+
+	<!-- 회원 탈퇴 -->
+	<delete id="withdrawUser" parameterType="String">
+		DELETE FROM users
+		WHERE
+		userid = #{userid}
+	</delete>
+
+	<!-- 아이디 찾기 -->
+	<select id="selectfindid" parameterType="java.util.Map"
+		resultType="UserDTO">
+		SELECT userid, email, phone
+		FROM users
+		WHERE email = #{email}
+		AND phone = #{phone}
+	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="selectfindpw" parameterType="java.util.Map"
+		resultType="UserDTO">
+		SELECT userpw, userid, email
+		FROM users
+		WHERE userid =
+		#{userid}
+		AND email = #{email}
+	</select>
+	<!-- 임시 비밀번호 -->
+	<update id="updatePassword" parameterType="UserDTO">
+		UPDATE users SET
+		userpw = #{userpw}
+		WHERE userid = #{userid}
+	</update>
+
+	<!-- 글쓴 내역 가져오기 -->
+	<select id="getBoardListByWriter" parameterType="String"
+		resultType="BoardDTO">
+		SELECT *
+		FROM board
+		WHERE writer = #{writer}
+	</select>
+	<!-- 댓글쓴 내역 가져오기 -->
+	<select id="getCommentListByWriter" parameterType="String"
+		resultType="CommentsDTO">
+		SELECT *
+		FROM comments
+		WHERE writer = #{writer}
+	</select>
+
+	<!-- 사용자가 찜한 여행지 목록 조회 -->
+	<select id="getLikesByUserId" parameterType="int"
+		resultType="LikesDTO">
+		SELECT likes.*, place.contentId AS place_id, place.title,
+		place.address,
+		place.viewcnt, place.likecnt
+		FROM likes
+		JOIN place ON
+		likes.place_id = place.contentId
+		WHERE likes.user_id = #{user_id}
+	</select>
+
+	<resultMap id="LikesPlaceResult" type="LikesDTO">
+		<id property="id" column="id" />
+		<result property="user_id" column="user_id" />
+		<result property="like_check" column="like_check" />
+		<association property="placeDTO"
+			resultMap="PlaceDTOResult" />
+	</resultMap>
+
+	<resultMap id="PlaceDTOResult" type="travelspot.DTO.PlaceDTO">
+		<id property="id" column="place_id" />
+		<result property="title" column="title" />
+		<result property="address" column="address" />
+		<result property="viewcnt" column="viewcnt" />
+		<result property="likecnt" column="likecnt" />
+	</resultMap>
+
+	<!-- 관리자 페이지 전체 회원리스트 조회 -->
+	<select id="getAllUsers" resultMap="userResultMap">
+		SELECT * FROM users LIMIT
+		#{startIdx}, #{usersPerPage}
+	</select>
+	<resultMap id="userResultMap" type="User.UserDTO">
+		<id property="userid" column="userid" />
+		<result property="username" column="username" />
+		<result property="email" column="email" />
+	</resultMap>
+	<select id="getTotalUserCount" resultType="int">
+		SELECT COUNT(*) FROM
+		users
+	</select>
+	<select id="getUserdetail" resultType="User.UserDTO">
+		SELECT * FROM users WHERE
+		userid = #{userid}
+	</select>
+
+	<!-- 회원 강제 탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM users
+		WHERE
+		userid = #{userid}
+	</delete>
+
+
+	<!-- 글 신고리스트 조회 -->
+	<select id="getAllReportBoardList" resultMap="reportResultMap">
+		SELECT id, boardId, reportedId, userId, reportCategory, reportContents,
+		regDate
+		FROM report WHERE boardId IS NOT NULL;
+	</select>
+
+
+	<!-- 댓글 신고리스트 조회 -->
+	<select id="getAllReportCommentList" resultMap="reportResultMap">
+		SELECT id, commentId, reportedId, userId, reportCategory, reportContents,
+		regDate
+		FROM report WHERE commentId IS NOT NULL AND commentId != 0;
+	</select>
+
+	<!-- 댓글 신고리스트 조회 -->
+
+	<resultMap id="reportResultMap" type="travelspot.DTO.ReportDTO">
+		<id property="id" column="id" />
+		<result property="commentId" column="commentId" />
+		<result property="userNickname" column="userNickname" />
+		<result property="userId" column="userId" />
+		<result property="reportCategory" column="reportCategory" />
+		<result property="reportContents" column="reportContents" />
+		<result property="regDate" column="regDate" />
+		<result property="contentId" column="contentId" />
+		<result property="boardId" column="boardId" />
+	</resultMap>
+	
+	<!-- 게시판 작성자 프로필 -->
+	<select id="getProfilePhotoByWriter" resultType="java.lang.String">
+        SELECT photo FROM users WHERE nickname = #{writer}
+    </select>
+    
+    <!-- 닉네임을 기준으로 유저 정보를 조회하는 쿼리 -->
+    <select id="getUserByNickname" resultType="UserDTO">
+        SELECT * FROM users WHERE nickname = #{nickname}
+    </select>
+    
+</mapper>

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+
+#body{
+	width: 66%;
+	margin: 0 auto;
+}
+div .name{
+	text-align:right;
+	font-weight: bold;
+}
+
+a{
+	font-size:0.6vw;
+	font-weight: bold;
+}
+
+.logo{
+	width:13%;
+	height:5%;
+}
+.menu{
+	margin-left:11%;
+	color: black;
+	font-weight: bold;
+	display:inline-block;
+	font-size: 0.9vw;
+}

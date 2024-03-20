@@ -1,0 +1,45 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+@font-face {
+	font-family: 'LeferiPoint-BlackA';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+a,
+a:link,
+a:active,
+a:hover,
+a:visited {
+	text-decoration: none;
+	color: #333;
+}
+ol,
+ul,
+li {
+	list-style: none;
+}
+body {
+	color: #333;
+	background-color: #fff;
+}
+.main_color {
+	color: #2463d3;
+}
+.sub_color {
+	color: #9fc4ff;
+}
+.font_title {
+	font-weight: 700;
+	font-family: 'LeferiPoint-BlackA';
+	font-size: 20px;
+}
+.font_content {
+	font-weight: 200;
+	font-family: 'LeferiPoint-BlackA';
+	font-size: 16px;
+}

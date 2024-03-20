@@ -1,0 +1,279 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: LeferiPoint-BlackA;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff')
+		format('woff');
+	margin: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.container {
+	width: 66%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 40px;
+}
+
+.side-menu-form {
+	width: 70%;
+	flex: 1.8 0 0; /* 회원 정보 조회 portion을 늘림 */
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	max-height: 800px;
+	overflow-y: auto; /* 세로 스크롤바 추가 */
+}
+
+.side-menu {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.side-menu-nav {
+	flex: 0.4 0 0; /* 사이드메뉴 portion을 유지함 */
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.side-menu-nav li {
+	margin-bottom: 10px;
+}
+
+.side-menu-nav a {
+	text-decoration: none;
+	color: #333;
+}
+
+.side-menu-nav a:hover {
+	color: #1565c0;
+}
+
+.side-menu-form p {
+	text-align: center; /* 가운데 정렬 */
+	font-size: 16px; /* 폰트 사이즈 조정 */
+}
+
+.side-menu-form .red-text {
+	color: black; /* 일단 기본 글자색은 검정색으로 설정 */
+}
+
+.side-menu-form .red-text span {
+	color: red; /* 빨간색으로 설정 */
+	font-weight: bold;
+}
+
+/* 글쓴 내역 */
+.userList-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.userList-table th {
+	font-weight: bold;
+	white-space: nowrap;
+	font-size: 1vw;
+}
+
+.userList-table td {
+	max-width: 400px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 10px;
+}
+
+.userList-table th, .userList-table td {
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+/* 짝수 행과 홀수 행의 배경색을 번갈아가면서 지정 */
+.userList-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.userList-table tr:hover {
+	background-color: #e6e6e6; /* 마우스 오버 시 배경색 변경 */
+}
+
+/* 페이징 버튼 스타일 */
+.paging-container {
+	text-align: left;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.paging-container strong {
+	color: black;
+	background-color: #e6e6e6;
+	cursor: pointer;
+	font-size: 11px;
+	border: 1px solid #ddd;
+	padding: 8px 8px;
+	text-decoration: none;
+}
+
+.paging-container a {
+	color: #f2f2f2;
+	cursor: pointer;
+	border: 1px solid #ddd;
+	padding: 8px 8px;
+	font-size: 11px;
+	text-decoration: none;
+}
+
+/* 회원 상세 정보 표시 영역 스타일 */
+.user-details {
+	display: none; /* 초기에는 숨겨진 상태 */
+	border: 1px solid #fff;
+	background-color: #fff;
+	color: #333;
+	width: 70%;
+	flex: 1.8 0 0; /* 회원 정보 조회 portion을 늘림 */
+	flex-direction: column;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	max-height: 800px;
+	overflow-y: auto; /* 세로 스크롤바 추가 */
+}
+
+/* 회원 상세 정보 표시 영역의 제목 스타일 */
+.user-details h2 {
+	font-size: 1.7vw;
+	text-align: center;
+	margin-top: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+}
+
+/* 회원 상세 정보 표시 영역의 내용 스타일 */
+.user-details p {
+	margin: 0;
+	padding: 5px 0;
+	text-align: center;
+	font-size: 1.2vw;
+	border: 1px solid #f2f2f2;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+#deleteUserButton {
+  margin-top: 10px;
+  background-color: #1565c0;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#deleteUserButton:hover {
+  background-color: #1976d2;
+}
+#backUserList {
+  margin-top: 10px;
+  background-color: #1565c0;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#backUserList:hover {
+  background-color: #1976d2;
+}
+
+/* 글 신고리스트 */
+.reportBoardList-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.reportBoardList-table th {
+	font-weight: bold;
+	white-space: nowrap;
+	font-size: 1vw;
+}
+
+.reportBoardList-table td {
+	max-width: 400px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 10px;
+}
+
+.reportBoardList-table th, .reportBoardList-table td {
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+/* 짝수 행과 홀수 행의 배경색을 번갈아가면서 지정 */
+.reportBoardList-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.reportBoardList-table tr:hover {
+	background-color: #e6e6e6; /* 마우스 오버 시 배경색 변경 */
+}
+
+
+/* 댓글 신고리스트 */
+.reportList-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.reportList-table th {
+	font-weight: bold;
+	white-space: nowrap;
+	font-size: 1vw;
+}
+
+.reportList-table td {
+	max-width: 400px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 10px;
+}
+
+.reportList-table th, .reportList-table td {
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+/* 짝수 행과 홀수 행의 배경색을 번갈아가면서 지정 */
+.reportList-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.reportList-table tr:hover {
+	background-color: #e6e6e6; /* 마우스 오버 시 배경색 변경 */
+}

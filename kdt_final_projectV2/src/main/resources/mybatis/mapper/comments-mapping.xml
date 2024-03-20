@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="travelspot.mapper.CommentsMapper">
+
+	<!-- 같은 여행지 내 댓글 조회-->
+	<select id="getComments" parameterType="int" resultType="commentsDTO">
+		SELECT * FROM comments 
+		WHERE place_id=#{place_id} 
+		ORDER BY writingtime desc  
+	</select>
+	
+	<!-- 댓글 저장-->
+	<insert id="insertComments" parameterType="commentsDTO">
+		INSERT into comments(
+			contents,
+			place_id, 
+			writer) 
+		VALUES(
+			#{contents},
+			#{place_id},
+			#{writer})
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComments" parameterType="int">
+		DELETE FROM comments 
+		WHERE id=#{id}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateComments" parameterType="updateCommentReq">
+		UPDATE comments 
+		SET 
+			contents=#{contents}, 
+			writingtime=now() 
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 댓글 내용 조회 -->
+	<select id="getOneContent" parameterType="int" resultType="commentsDTO">
+		SELECT * FROM comments 
+		WHERE id=#{id}  
+	</select>
+	
+	<insert id="insertReport" parameterType="reportDTO">
+		INSERT INTO report(
+			contentId, 
+			commentId, 
+			userNickname, 
+			userId, 
+			reportCategory, 
+			reportContents, 
+			regDate, 
+			reportedId)
+		values(
+			#{contentId},
+			#{commentId},
+			#{userNickname},
+			#{userId},
+			#{reportCategory},
+			#{reportContents},
+			now(),
+			#{reportedId}) 
+	</insert>
+	
+	<select id="selectUserId" parameterType="int" resultType="String">
+		SELECT userId 
+		FROM report 
+		WHERE commentId=#{commentId}
+	</select>
+	
+	<select id="selectReportedId" parameterType="int" resultType="String">
+		SELECT userid 
+		FROM users 
+		WHERE nickname=(select writer from comments where id=#{id})
+	</select>
+	
+	<!-- resultMap 사용시 새로운 DTO 필요 -->
+	<resultMap type="CommentsUserDTO" id="commentMap">
+	 <id property="id" column="id"/>
+	 <result property="place_id" column="place_id"/>
+	 <result property="contents" column="contents"/>
+	 <result property="writingtime" column="writingtime"/>
+	 <result property="writer" column="writer"/>
+	 <collection property="UserDTO" resultMap="userMap"/>
+	</resultMap>
+	<resultMap type="UserDTO" id="userMap">
+	 <id property="id" column="id"/>
+	 <result property="photo" column="photo"/>
+	</resultMap>
+	
+	<select id="getCommentsProfile" resultMap="commentMap" parameterType="int">
+		SELECT 
+			c.id as id, 
+			contents, 
+			writingtime, 
+			writer , 
+			u.photo
+		FROM comments c join users u ON c.writer=u.nickname
+		WHERE place_id=${place_id}
+	</select>
+
+</mapper>
+
+
+
+
+
+

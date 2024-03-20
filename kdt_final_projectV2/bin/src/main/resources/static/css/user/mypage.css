@@ -1,0 +1,224 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: LeferiPoint-BlackA;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff')
+		format('woff');
+	margin: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.header, .footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+}
+
+.container {
+	width: 66%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 40px;
+}
+
+.preview-img {
+	width: 100px;
+	height: 100px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+	margin-bottom: 8px;
+	font-weight: bold;
+	color: #666;
+}
+
+input, select, textarea {
+	margin-bottom: 20px;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+input[type="submit"] {
+	background-color: #1565c0;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 0;
+}
+
+input[type="submit"]:hover {
+	background-color: #1976d2;
+}
+
+.side-menu-form {
+	width: 70%;
+	flex: 1.8 0 0; /* 회원 정보 조회 portion을 늘림 */
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.side-menu {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.side-menu-nav {
+	flex: 0.4 0 0; /* 사이드메뉴 portion을 유지함 */
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.side-menu-nav li {
+	margin-bottom: 10px;
+}
+
+.side-menu-nav a {
+	text-decoration: none;
+	color: #333;
+}
+
+.side-menu-nav a:hover {
+	color: #1565c0;
+}
+
+.profileImgPreview {
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+.profileImgPreview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.side-menu-form p {
+	text-align: center; /* 가운데 정렬 */
+	font-size: 16px; /* 폰트 사이즈 조정 */
+}
+
+.side-menu-form .red-text {
+	color: black; /* 일단 기본 글자색은 검정색으로 설정 */
+}
+
+.side-menu-form .red-text span {
+	color: red; /* 빨간색으로 설정 */
+	font-weight: bold;
+}
+
+/* 프로필 이미지 스타일 */
+.profile-image {
+	max-width: 150px; /* 최대 너비 */
+	max-height: 150px; /* 최대 높이 */
+	display: block; /* 가로 중앙 정렬을 위해 블록 요소로 설정 */
+	margin: 0 auto; /* 가로 중앙 정렬 */
+	border-radius: 50%; /* 원형 이미지를 위한 둥근 테두리 설정 */
+}
+
+#detailAddress,
+#extraAddress,#address,#postcode {
+	width: 100%;
+	color: #555;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 14px;
+}
+
+#extraAddress {
+	margin-right: 0;
+}
+
+#postcodesearch {
+	text-align: center;
+	width: 100%; /* 수정 */
+	padding: 6px 12px;
+	background-color: #1565c0 !important;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff !important;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#postcodesearch:hover {
+	background-color: #1976d2 !important;
+}
+/* 글쓴 내역 */
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.board-table th{
+	font-weight: bold;
+    font-size: 1.2vw;
+}
+.board-table td{
+	font-size: 0.9vw;
+}
+
+.board-table th,
+.board-table td {
+  padding: 5px;
+  text-align: center;
+}
+
+/* 댓글쓴 내역 */
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.comments-table th{
+	font-weight: bold;
+	font-size: 1.3vw;
+}
+.comments-table td{
+	font-size: 0.9vw;
+}
+
+.comments-table th,
+.comments-table td {
+  padding: 5px;
+  text-align: center;
+}
+.comments-table th{
+	font-weight: bold;
+}
+
+

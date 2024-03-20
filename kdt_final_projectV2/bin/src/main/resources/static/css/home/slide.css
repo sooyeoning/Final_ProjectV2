@@ -1,0 +1,57 @@
+@charset "UTF-8";
+	* {
+	margin:0;padding:0;
+	}
+	
+	.section input[id*="slide"] {display:none;}
+
+	.section .slide-wrap {max-width:100%;margin:0 auto;}
+	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;}
+	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
+	.section .slidelist > li > .class{display:block;position:relative;}
+	.section .slidelist > li >  img {width:100%;}
+	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:2%;cursor:pointer;}
+	.section .slidelist .left {
+	left:1%;
+	background:url('../home/left.svg') no-repeat;
+	}
+	.section .slidelist .right {
+	right:1%;
+	background:url('../home/right.svg')no-repeat;
+	}
+	
+	.section .slidelist .textbox {
+	position:absolute;
+	z-index:1;
+	top:40%;
+	left:17%;
+	text-align:left;}
+	
+	.section .slidelist .textbox .desc{
+		top:40%;
+		left:17%;
+		opacity:0;
+		color: #FFFFFF;
+		font-size: 3vw;
+   		font-family: 'LeferiPoint-SpecialItalicA';
+   		transform:translateY(30px);
+   		transition:all .5s;
+   		}
+	.section .slidelist .textbox h3 {
+	font-family: 'LeferiPoint-SpecialItalicA';
+	font-size:1vw;
+	color:#fff;
+	opacity:0;
+	transform:translateY(30px);
+	transition:all .5s;
+	}
+	.section input[id="slide01"]:checked ~ .slide-wrap .slidelist > li {transform:translateX(0%);}
+	.section input[id="slide02"]:checked ~ .slide-wrap .slidelist > li {transform:translateX(-100%);}
+	.section input[id="slide03"]:checked ~ .slide-wrap .slidelist > li {transform:translateX(-200%);}
+	
+	.section input[id="slide01"]:checked ~ .slide-wrap li:nth-child(1) .textbox p {opacity:1;transform:translateY(0);transition-delay:.2s;}
+	.section input[id="slide01"]:checked ~ .slide-wrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.4s;}
+	.section input[id="slide02"]:checked ~ .slide-wrap li:nth-child(2) .textbox p {opacity:1;transform:translateY(0);transition-delay:.2s;}
+	.section input[id="slide02"]:checked ~ .slide-wrap li:nth-child(2) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.4s;}
+	.section input[id="slide03"]:checked ~ .slide-wrap li:nth-child(3) .textbox p {opacity:1;transform:translateY(0);transition-delay:.2s;}
+	.section input[id="slide03"]:checked ~ .slide-wrap li:nth-child(3) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.4s;}

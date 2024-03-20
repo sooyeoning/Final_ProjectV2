@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FAQ.FAQDAO">
+
+	<insert id="insertArticle" parameterType="faqdto">
+		INSERT INTO board
+		(title, contents, board_title, writingtime, writer, answer)
+		VALUES
+		(#{title},
+		#{contents}, #{board_title}, now(), #{writer}, #{answer})
+	</insert>
+
+	<!-- board_title에 값이 있는 데이터만 조회 -->
+	<select id="selectAllFAQs" resultType="faqdto"
+		parameterType="string">
+		SELECT *
+		FROM board
+		where (board_title='일반' or
+		board_title='신고/이용제한' or board_title='기타' or board_title='가입 변경/탈퇴' or
+		board_title='프로필 관련')
+		AND writer = #{writer}
+	</select>
+
+	<select id="selectAllFAQsForAdmin" resultType="faqdto"
+		parameterType="string">
+		<if test="writer == 'admin'">
+			SELECT * FROM board where (
+			board_title='일반' or
+			board_title='신고/이용제한' or
+			board_title='기타' or
+			board_title='가입 변경/탈퇴' or
+			board_title='프로필 관련' )
+		</if>
+	</select>
+
+	<select id="selectTotalFAQCount" resultType="int">
+		SELECT COUNT(*) FROM board where(
+		board_title='일반' or
+		board_title='신고/이용제한' or
+		board_title='기타' or
+		board_title='가입 변경/탈퇴' or
+		board_title='프로필 관련'
+		);
+	</select>
+
+	<select id="answer">
+		SELECT answer FROM board WHERE(
+		board_title='일반' or
+		board_title='신고/이용제한' or
+		board_title='기타' or
+		board_title='가입 변경/탈퇴' or
+		board_title='프로필 관련' ) AND id=#{id} And writer='admin';
+	</select>
+	<!-- <select id="getWriterById"> SELECT writer FROM board WHERE id = #{id} 
+		</select> -->
+
+	<delete id="deleteArticleById">
+		DELETE FROM board
+		where (board_title='일반' or board_title='신고/이용제한' or
+		board_title='기타' or board_title='가입 변경/탈퇴' or board_title='프로필 관련')
+		AND id = #{id} <!-- AND writer = #{writer}; -->
+	</delete>
+
+	<!-- board_title에 값이 있는 모든 글 갯수를 카운트 -->
+	<!-- <select id="getTotalFAQBoard" parameterType="int" resultType="int"> 
+		SELECT COUNT(*) FROM board WHERE board_title IS NOT NULL; </select> -->
+	<update id="updateFAQ" parameterType="BoardDTO">
+		UPDATE board
+		SET
+		title=#{title},
+		contents=#{contents},
+		board_title=#{board_title},
+		answer=#{answer}
+		WHERE
+		id
+		= #{id}
+	</update>
+
+	<select id="getBoardById2">
+		SELECT title, contents, board_title, answer
+		FROM board
+		WHERE
+		id = #{id};
+	</select>
+
+
+</mapper>
+
+
+
+
+
+

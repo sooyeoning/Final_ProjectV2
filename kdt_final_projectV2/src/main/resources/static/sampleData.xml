@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+	<header>
+		<resultCode>0000</resultCode>
+		<resultMsg>OK</resultMsg>
+	</header>
+	<body>
+		<items>
+			<item>
+				<contentid>125974</contentid>
+				<contenttypeid>12</contenttypeid>
+				<title>돈암서원 [유네스코 세계문화유산]</title>
+				<createdtime>20040219090000</createdtime>
+				<modifiedtime>20230209113616</modifiedtime>
+				<tel></tel>
+				<telname></telname>
+				<homepage>&lt;a href=&quot;http://www.donamseowon.co.kr&quot;
+					target=&quot;_blank&quot; title=&quot;새창 : 돈암서원 홈페이지로
+					이동&quot;&gt;http://www.donamseowon.co.kr&lt;/a&gt;&lt;br /&gt;&lt;a
+					href=&quot;http://www.nonsan.go.kr/tour/&quot;
+					target=&quot;_blank&quot; title=&quot;새창: 논산시
+					문화관광&quot;&gt;http://www.nonsan.go.kr/tour/&lt;/a&gt;&lt;br
+					/&gt;&lt;a href=&quot;http://www.cha.go.kr/&quot;
+					target=&quot;_blank&quot; title=&quot;문화재청 사이트로
+					이동&quot;&gt;http://www.cha.go.kr&lt;/a&gt;</homepage>
+				<booktour>0</booktour>
+				<firstimage></firstimage>
+				<firstimage2></firstimage2>
+				<cpyrhtDivCd></cpyrhtDivCd>
+				<areacode>34</areacode>
+				<sigungucode>3</sigungucode>
+				<cat1>A02</cat1>
+				<cat2>A0201</cat2>
+				<cat3>A02010700</cat3>
+				<addr1>충청남도 논산시 연산면 임3길 26-14</addr1>
+				<addr2></addr2>
+				<zipcode>32913</zipcode>
+				<mapx>127.1808762055</mapx>
+				<mapy>36.2087782194</mapy>
+				<mlevel>6</mlevel>
+				<overview>* 김장생을 제향한 서원, 돈암서원&lt;br /&gt;&lt;br /&gt;돈암서원은 조선 인조
+					12년(1634) 이곳에서 1.5km 떨어진 숲말에 세워졌었다. 현종 원년(1660)에 사액서원이 되었으나 지대가 낮아
+					홍수 때에는 물이 뜰까지 넘쳐들어 오므로, 고종 17년(1880) 현재의 자리인 임리 74번지(서원말)로 옮겨지었다.
+					고종 3년(1865) 서원철폐령에서도 제외된 서원이었다. 소슬 3문으로 꾸며진 입덕문을 들어서면 정면에 양성당 좌측에
+					응도당 그리고 사우는 양성당 후면에 있고, 장판각, 정회당, 산앙루가 있다. 유림들이 매년 음력 2월과 8월 중정에
+					제사를 올리고 있다. 사우의 전면은 1칸통을 개방하여 전퇴를 두었고, 내부는 우물마루를 깔았으며 전퇴는 전돌 바닥이다.
+					전면 기둥사이에는 사분합 띠살문을 달고 옆면과 뒷면은 회벽이다. 공포의 구성은 이익공외출목과 동일한 수법으로 짜여져
+					있다. 내부의 양봉은 전통적인 모습을 유지하고 있고, 창방 위에 설치된 화반형의 초각반은 기둥 사이마다 1개씩이다.
+					지붕가구는 퇴고주를 세워 퇴량과 대들보를 걸었는데 용재는 새우처럼 휘어진 것을 썼다. 대들보 위에 일종의 포대공을 얹어서
+					퇴고주와 함께 종량을 받쳤으며 다시 종량위에 파연대공을 두고 종도리를 받쳤다. 사우에는 김장생을 주향으로 하여 김집
+					송준길 송시열선생 등 문묘에 배향된 네 분만을 모시고 있는 보기드문 선정 서원이다. 돈암서원비문에 의하면 방, 대청,
+					툇마루, 행랑을 갖춘 응도당이 있었고, 응도당의 왼쪽에 거경제 오른쪽에 정의재가 있었으나 현재로서는 그 건물이 어느
+					것인지를 분간하기도 어렵고 원형대로 보존되어 오지 못한 아쉬움이 있다.&lt;br /&gt;&lt;br /&gt;*
+					돈암서원의 의의와 평가&lt;br /&gt;&lt;br /&gt;광산김씨는 연산 지역에서 세거하면서 많은 인재를 배출한
+					호서 명문 사족가문이다. 이런 이유로 돈암서원은 서인-노론계를 대표하는 서원으로 1871년 서원 훼철령 때에도 훼철되지
+					않고 보존되어 오늘에까지 이르고 있으며, 특히 김장생이 타계한 후 제자와 문인들이 만든 돈암서원책판(遯巖書院冊版)이 등
+					여러 자료가 남아 있다.이렇듯 돈암서원은 호서 지역은 물론 기호 지역 전체에서 존숭받는 서원으로, 김장생을 제향한 서원
+					중에서 가장 비중 있고 영향력 있는 서원으로 인정받고 있다. 현재까지 잘 보호, 관리되고 있으며 지역사를 연구하는 향토
+					자료로서도 보존적 가치가 높다. 나아가 호서 지역 사림의 동향을 연구하는 데 좋은 자료가 되며, 당시 실질적인 세력권자인
+					김장생의 영향력을 알 수 있다.&lt;br /&gt;&lt;br /&gt;* 소유 - 광산김씨 종중&lt;br&gt;
+				</overview>
+			</item>
+		</items>
+		<numOfRows>1</numOfRows>
+		<pageNo>1</pageNo>
+		<totalCount>1</totalCount>
+	</body>
+</response>

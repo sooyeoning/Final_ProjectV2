@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* main 섹션 내부 스타일링 */
+
+h2{
+/*    width: 100%;*/
+    /*padding: 12px 15px;*/	
+}
+h5{
+	font-weight:normal;
+}
+
+li{
+	    width: 100%;
+/*    padding: 12px 15px;*/
+}
+
+.form-control {
+    width: 100%;
+/*    padding: 12px 15px;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group-phone{
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.wrap_select_nation {
+  width: 7em;
+  
+}
+
+.wrap_phone {
+  flex-grow: 1;
+}
+
+.form-control-phone {
+    width: 100%;
+/*    padding: 12px 15px;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-control-textarea {
+	height:20em;
+    width: 100%;
+/*    padding: 12px 15px;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-control-category {
+    width: 100%;
+/*    padding: 12px 15px;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right:0;
+}
+
+.form-group-attachment-label{
+	display:flex;
+	width: 5em;
+/*    padding: 12px 15px;*/
+    font-size: 14px;
+}
+
+input[type="file"] {
+  display: none; /* 파일 첨부 버튼 숨기기 */
+}
+
+.custom-file-button {
+  display: inline-block;
+  width: 100%;;
+/*  padding: 10px 15px;*/
+  background-color: #9FC4FF;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 2em;
+}
+
+.custom-file-button:hover {
+  background-color: #2463D3;
+}
+
+.form-group-attachment{
+	display:flex;
+	width: 100%;
+/*    padding: 12px 15px;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#file-attachment{
+	text-align: right;
+	padding-right:0%;
+}
+
+
+p.bold-text {
+  font-weight: bold;
+}
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+/*    padding: 8px;*/
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+.checkbox-container {
+  text-align: right;
+  
+}
+
+.checkbox-container input[type="checkbox"] {
+  float: right;
+  height: 16px;
+  width: 16px;
+  margin-left:3px;
+  margin-top:4px;
+}
+
+
+
+button[type="submit"] {
+	float: right;
+  background-color: #9FC4FF;
+  color: white;
+  /*padding: 10px 20px;*/
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #2463D3;
+}
+
+section{
+	width:100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+    .section-container {
+      display: flex;
+      width: 66%;
+    }
+    
+    .left-section {
+	margin-left:17%;
+      flex: 1;
+      /* 추가 스타일링 */
+      box-sizing: border-box;
+      border-right: solid;
+
+    }
+
+.category-list li a {
+  text-decoration: none;
+  color: #333;
+  	font-family: 'LeferiPoint-BlackA';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff')
+		format('woff');
+	font-weight: 100;
+	font-style: normal;
+	font-size:16px;
+
+}
+
+.category-list li a:hover {
+  color: #777;
+}
+    
+    .right-section {
+	margin-right:17%;
+      flex: 3;
+      /* 추가 스타일링 */
+    }
+    

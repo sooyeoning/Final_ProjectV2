@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="travelspot.CommentsMapper">
+
+<!-- 같은 여행지 내 댓글 조회-->
+<select id="getComments" parameterType="int" resultType="CommentsDTO">
+	select*from comments where place_id=#{place_id} order by writingtime desc ; 
+</select>
+
+<!-- 댓글 저장-->
+<insert id="insertComments" parameterType="CommentsDTO">
+	insert into comments(contents,place_id, writer) values(#{contents},#{place_id},#{writer});
+</insert>
+
+<!-- 댓글 삭제 -->
+<delete id="deleteComments" parameterType="int">
+	delete from comments where id=#{id};
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="updateComments" parameterType="CommentsDTO">
+	update comments set contents=#{contents}, writingtime=now() where id=#{id};
+</update>
+
+<!-- 댓글 내용 조회 -->
+<select id="getOneContent" parameterType="int" resultType="CommentsDTO">
+	select*from comments where id=#{id} ; 
+</select>
+
+<!-- 대댓글 저장 -->
+<insert id="insertReply" parameterType="CommentsDTO">
+	insert into comments(contents,place_id, writer, comment_group) values(#{contents},#{place_id},#{writer}, #{comment_group});
+</insert>
+
+</mapper>
+
+
+
+
+
+

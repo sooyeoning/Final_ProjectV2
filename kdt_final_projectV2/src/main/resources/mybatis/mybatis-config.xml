@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- <settings> <setting name="logImpl" value="LOG4J"/> </settings> -->
+
+	<typeAliases>
+		<typeAlias type="User.UserDTO" alias="UserDTO" />
+		<typeAlias type="User.LikesDTO" alias="LikesDTO" />
+		<typeAlias type="travelspot.DTO.PlaceDTO" alias="placedto" />
+		<typeAlias type="travelspot.DTO.CommentsDTO" alias="commentsDTO" />
+		<typeAlias type="travelspot.DTO.ContentsDTO" alias="contentsDTO" />		
+		<typeAlias type="travelspot.DTO.PlaceContentsDTO" alias="placeContentsDTO" />
+		<typeAlias type="travelspot.DTO.CommentsUserDTO" alias="commentsUserDTO" />
+		<typeAlias type="travelspot.DTO.ReportDTO" alias="reportDTO" />
+		<typeAlias type="travelspot.model.UpdateCommentReq" alias="updateCommentReq" />
+		
+		<typeAlias type="community.BoardDTO" alias="boarddto" />
+		<typeAlias type="community.CommentsDTO" alias="CommuCommentsDTO" />
+		
+		<typeAlias type="FAQ.FAQDTO" alias="faqdto" />
+		<typeAlias type="controller.HomeDTO" alias="homeDTO"/>
+
+	</typeAliases>
+
+</configuration>

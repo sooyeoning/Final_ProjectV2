@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+/*travelspot_main 페이지*/
+.titlebox {
+	width: 66%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	margin: 0 auto 10px;
+	border: solid 2px #2463d3;
+}
+
+.box { /*이미지 틀*/
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+    overflow: hidden; /*넘치는 부분은 감춘다*/
+}
+
+.profile { /*이미지*/
+    width: 100%; 
+    height: 100%; 
+  	object-fit: cover; /*비율 그대로 유지한채 이미지 가공*/    
+}
+
+.regionName{
+	display: flex;
+	justify-content: center;
+}
+
+.regionContainer {
+  width:66%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 2% 17% 0 17%;
+}
+
+.regionItem {
+  width: 28%; /* 3칸을 만들고 싶으면.. 26 ~ 33%로..*/
+  height: 245.76px;
+  margin: 10px 0 100px 0; /*행간 간격: 100px 조정*/
+}
+
+.regionItem-list { /*지역명 나열*/
+  width: 12%;
+  margin: 0 auto; /*행간 간격: 100px 조정*/
+}
+
+/*travelspot_list 페이지*/
+.box-list { /*6개 이미지 틀*/
+    border-radius: 70%;
+    height: 100%; /*동그라미*/
+	overflow: hidden; /*넘치는 부분은 감춘다*/
+}
+
+.placeprofile { /*장소이미지*/
+    width: 100%; 
+	height: 20vh;
+    object-fit: cover; /*비율 그대로 유지한채 이미지 가공*/    
+}
+
+.container {
+  width:66%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 2% 17% 0 17%;
+}
+
+.item {
+  width: 28%; /* 3칸을 만들고 싶으면.. 26 ~ 33%로..*/
+  height: 40vh;
+  padding-top: 5px;
+  margin: 0 0 50px 0; /*행간 간격: 100px 조정*/
+}
+
+/* 관광명소 상세페이지 */
+.postmenu{
+display: flex;
+  justify-content: space-evenly;
+  margin: 5px 17% 5px 17%;
+}
+
+.margin{
+  margin: 2% 17% 5px 17%;  
+}
+
+.hrmargin{ /*상세페이지 메뉴바 구분선*/
+  margin: 1% 17% 1% 17%; 
+  /*hr 색상 변경*/
+  background: #2463d3;
+  height: 0.5px;
+}
+
+.result{ /*결과물 출력의 부모 요소*/
+margin: 5px 17% 5px 17%;  
+width: 66%;
+}
+
+.comments{ /*결과물 출력의 부모 요소*/ 
+width: 100%;
+}
+
+.images{ /*결과물 출력의 자식 요소*/
+	display: block; /**/
+	width: 100%; /*부모 요소 너비의 100%*/
+	height: auto; /*기존 이미지가 가지고 있던 비율에 맞춰서 자동으로 높이 조절*/
+	margin: 15px 0; /*부모 요소 안받아?*/
+}
+
+.textarea-outerbox{ /*댓글창 바깥 상자*/
+	width: 100%-40px;
+	padding: 3% 3% 6% 3%;
+	border: solid 1px #2463d3;
+}
+
+.textarea-innerbox{ /*댓글 작성하는 textarea*/
+	resize: none;
+	padding: 10px;
+	border: solid 1px #2463d3;
+	width: 60vw;
+	outline-color: #FE6B8B; /*텍스트창 클릭했을때(focus) 색상 변경*/
+}
+
+.comment-textarea-innerbox{ /*댓글 작성하는 textarea*/
+	resize: none;
+	overflow: scroll;
+	padding: 10px;
+	border-bottom: solid 1px #2463d3;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 60vw;
+	outline-color: #FE6B8B; /*텍스트창 클릭했을때(focus) 색상 변경*/
+	margin-bottom: 2%;
+}
+
+#contents{
+	margin-top: 1.7vh;
+}
+.comments-outerbox{ /*작성된 댓글 보여주는 바깥 상자*/
+	width: 100%-40px;
+	height: fit-content;
+	padding: 3%;
+	border-bottom: solid 1px #2463d3;
+}
+
+.replywriting-outerbox{ /*대댓글 작성시 보이는 상자*/
+	width: 100%-40px;
+	height: fit-content;
+	padding: 3%;
+	border: none;
+}
+
+.reply-outerbox{ /*대댓글 보여주는 바깥 상자*/
+	width: 100%-50px;
+	float:right;
+	height: fit-content;
+	padding: 3%;
+	border-bottom: solid 1px #2463d3;
+}
+
+.comments-innerbox{ /*작성된 댓글 보여주는 안 상자*/
+	height: fit-content;
+}
+
+.savebutton, .replybutton{
+	width: 8%;
+	text-align: center;
+	background-color: #2463d3;
+	border-radius: 4px;
+	border: none;
+	color: white; /*글씨색상*/
+	padding: 1%;
+	margin: 10px 0 0 0;
+	float: right;/*오른쪽 끝 정렬*/
+}
+
+.replybutton{
+	width: 8vw;
+	text-align: center;
+	background-color: #2463d3;
+	border-radius: 4px;
+	border: none;
+	color: white; /*글씨색상*/
+	padding: 0.5%;
+	margin: 5px 0 0 0;
+	float: left;/*오른쪽 끝 정렬*/
+}
+
+.deletebutton, .modifybutton, .modify_savebtn, .modify_cancelbtn{
+	color: black; /*글씨색상*/
+	background-color: white;
+    border: none;
+	width: 6%;
+	text-align: center;
+	padding: 0.5%;
+	float: right;
+	/*오른쪽 끝 정렬*/
+}
+
+/* 테마별 장소리스트(list_theme) 페이지*/
+.themeContainer {
+  width:66vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 복수의 행*/
+  margin: 2% 17% 0 17%;
+}
+
+.themeItem-list { /*지역명 나열*/
+  width: 14vw;
+  margin: 0 auto; /*행간 간격: 100px 조정*/
+}
+
+.theme-list { /*6개 이미지 틀*/
+text-align: center;
+}
+
+.themeprofile { /*이미지*/
+    width: 100%; 
+  	object-fit: cover; /*비율 그대로 유지한채 이미지 가공*/ 
+}
+
+.pages{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.search-form {
+  display: flex;
+  float: right;
+  max-width: 30em;
+  width:68%;
+  margin: 1% 17% 2% 0;
+}
+
+.search-input {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  flex: 1;
+  box-sizing: border-box;
+  width: 15em;
+  height: 35px;
+  top: 158px;
+  background: #FFFFFF;
+  border: 1px solid #2463D3;
+}
+
+.search-button {
+  padding: 3px 8px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 5em;
+  height: 35px;
+  top: 158px;
+  background: #9FC4FF;
+  font-size: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.search-label {
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.search-item {
+  width: 15em;
+  height: 35px;
+  margin-right: 10px;
+  padding-left: 10px;
+  border-radius: 4px;
+  font-size: 16px;  
+  border: 1px solid #2463D3;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  border-radius: 0px;
+}
+
+select::-ms-expand {
+  /* for IE 11 */
+  display: none;
+}

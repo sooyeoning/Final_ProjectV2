@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User.PlaceDAO">
+<!-- 사용자가 찜한 여행지 목록 조회 -->
+<select id="getPlaceById" resultType="PlaceDTO">
+SELECT * FROM place WHERE contentId = #{place_id}
+</select>
+
+<resultMap id="LikesPlaceResult" type="LikesDTO">
+    <id property="id" column="id" />
+    <result property="user_id" column="user_id" />
+    <result property="like_check" column="like_check" />
+    <association property="placeDTO" resultMap="PlaceDTOResult" />
+</resultMap>
+
+<resultMap id="PlaceDTOResult" type="travelspot.DTO.PlaceDTO">
+    <id property="id" column="place_id" />
+    <result property="title" column="title"/>
+    <result property="address" column="address" />
+    <result property="viewcnt" column="viewcnt" />
+    <result property="likecnt" column="likecnt" />
+</resultMap>
+
+</mapper>

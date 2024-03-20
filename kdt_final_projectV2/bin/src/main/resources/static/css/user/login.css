@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+.container {
+	width: 30%;
+	max-width: 400px;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	margin: 80px auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-control {
+	width: 100%;
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.btn-default {
+	width: 100%;
+	padding: 12px 15px;
+	background-color: #1565c0 !important;
+	border: none;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff !important;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn-default:hover {
+	background-color: #1976d2 !important;
+}
+
+#postcode {
+	width: 48%;
+	color: #555;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	margin-bottom: 15px;
+	margin-right: 72px;
+}
+
+#address {
+	width: 98%;
+	color: #555;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+#detailAddress, #extraAddress {
+	display: inline-block;
+	width: 48%;
+	color: #555;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	margin-right: 5px;
+}
+
+#extraAddress {
+	margin-right: 0;
+}
+
+#postcodesearch {
+	text-align: center;
+	width: 30%;
+	padding: 6px 12px;
+	background-color: #1565c0 !important;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff !important;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#postcodesearch:hover {
+	background-color: #1976d2 !important;
+}
+
+.find-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.find-button {
+	flex: 1;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-color: #f5f5f5;
+	color: #333;
+	border: 1px solid #ccc;
+	width: 45%;
+}
+
+.find-button:hover {
+	background-color: #ebebeb;
+}
+
+@media ( max-width : 768px) {
+	.find-buttons {
+		flex-wrap: wrap;
+	}
+	.find-button {
+		margin-bottom: 5px;
+		width: 100%;
+	}
+}

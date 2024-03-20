@@ -1,0 +1,45 @@
+@charset "utf-8";
+.slide-wrap{
+	width:100%;
+	
+	position:relative;
+}
+.slide-image img{
+	width:100%;	
+}
+
+.slide-text{
+		position: absolute;
+		top:40%;
+		left:17%;
+		color: #FFFFFF;
+		font-size: 3vw;
+		
+   		font-family: 'LeferiPoint-SpecialItalicA';
+	
+		
+}
+.recommendtop {
+	display: inline-box;
+}
+.recommendbottom {
+	display: inline-box;
+}
+#recommend{
+	width: 66%; 
+	margin: 0 auto;
+}
+.rmenu{
+	display: inline-box;
+	width:24%;
+}
+#top5{
+	width: 66%; 
+	margin: 0 auto; 
+	text-align:center;
+}
+.tmenu{
+	display: inline-box;
+	position: relative;
+	width:40%;
+}

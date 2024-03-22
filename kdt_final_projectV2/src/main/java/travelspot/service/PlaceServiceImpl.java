@@ -10,6 +10,10 @@ import travelspot.DTO.ContentsDTO;
 import travelspot.DTO.PlaceContentsDTO;
 import travelspot.DTO.PlaceDTO;
 import travelspot.mapper.PlaceMapper;
+import travelspot.model.CheckUserLikesReq;
+import travelspot.model.GetListReq;
+import travelspot.model.GetListThemeReq;
+import travelspot.model.GetPlaceReq;
 
 @Service
 public class PlaceServiceImpl {
@@ -21,16 +25,16 @@ public class PlaceServiceImpl {
 		return placemapper.selectPlace(contentId);
 	}
 
-	public List<PlaceDTO> listPlaces(HashMap<String, Object> param) {
-		return placemapper.listPlaces(param);
+	public List<PlaceDTO> listPlaces(GetListReq req) {
+		return placemapper.listPlaces(req);
 	}
 
 	public int getTotalCnt(int areaCode) {
 		return placemapper.getTotalCnt(areaCode);
 	}
 
-	public List<PlaceContentsDTO> listThemePlaces(HashMap<String, Object> param) {
-		return placemapper.listThemePlaces(param);
+	public List<PlaceContentsDTO> listThemePlaces(GetListThemeReq req) {
+		return placemapper.listThemePlaces(req);
 	}
 
 	public int getTotalThemeCnt(String theme) {
@@ -65,32 +69,32 @@ public class PlaceServiceImpl {
 		placemapper.likePlace(contentId);
 	}
 
-	public Integer CheckPlaceLikes(HashMap<String, Integer> map) {
-		return placemapper.CheckPlaceLikes(map);
+	public Integer CheckPlaceLikes(CheckUserLikesReq req) {
+		return placemapper.CheckPlaceLikes(req);
 	}
 
-	public void insertLikes(HashMap<String, Integer> map) {
-		placemapper.insertLikes(map);
+	public void insertLikes(CheckUserLikesReq req) {
+		placemapper.insertLikes(req);
 	}
 
-	public List<PlaceDTO> searchPlace(HashMap<String, Object> map) {
-		return placemapper.searchPlace(map);
+	public List<PlaceDTO> searchPlace(GetPlaceReq param) {
+		return placemapper.searchPlace(param);
 	}
 
-	public int searchPlaceCnt(HashMap<String, Object> map) {
-		return placemapper.searchPlaceCnt(map);
+	public int searchPlaceCnt(GetPlaceReq param) {
+		return placemapper.searchPlaceCnt(param);
 	}
 
-	public List<PlaceContentsDTO> searchThemePlaces(HashMap<String, Object> map) {
-		return placemapper.searchThemePlaces(map);
+	public List<PlaceContentsDTO> searchThemePlaces(GetPlaceReq param) {
+		return placemapper.searchThemePlaces(param);
 	}
 
-	public int searchThemePlacesCnt(HashMap<String, Object> map) {
-		return placemapper.searchThemePlacesCnt(map);
+	public int searchThemePlacesCnt(GetPlaceReq param) {
+		return placemapper.searchThemePlacesCnt(param);
 	}
 
-	public void cancelLikes(HashMap<String, Integer> map) {
-		placemapper.cancelLikes(map);
+	public void cancelLikes(CheckUserLikesReq req) {
+		placemapper.cancelLikes(req);
 	}
 
 	public Integer cancelPlaceLike(int contentId) {

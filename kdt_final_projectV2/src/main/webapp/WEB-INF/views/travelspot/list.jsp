@@ -9,7 +9,7 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 
 <link href="/css/travelspot/import.css" rel="stylesheet" type="text/css"/>
-<script src="/js/travelspot/travelspot_list.js"></script>
+<script src="/js/travelspot/list.js"></script>
 
 </head>
 <body>

@@ -138,7 +138,7 @@
 	</update>
 
 	<!-- 여행지 게시글 전체 조회(페이징0) -->
-	<select id="listPlaces" parameterType="hashmap"
+	<select id="listPlaces" parameterType="getListReq"
 		resultType="placeDTO">
 		SELECT 
 			replace(address,"null", '') as address, 
@@ -229,28 +229,28 @@
 		WHERE contentId=#{contentId}
 	</update>
 
-	<delete id="cancelLikes" parameterType="hashmap">
+	<delete id="cancelLikes" parameterType="checkUserLikesReq">
 		DELETE FROM likes 
-		WHERE place_id=#{place_id} and user_id=#{user_id}
+		WHERE place_id=#{placeId} and user_id=#{userId}
 	</delete>
 
 	<!-- 좋아요 테이블 정보 저장: 찜했으면 1, 찜안하면 0 -->
-	<insert id="insertLikes" parameterType="hashmap">
+	<insert id="insertLikes" parameterType="checkUserLikesReq">
 		INSERT INTO likes(
 			like_check, 
 			user_id, 
 			place_id) 
 		VALUES(
 			1, 
-			#{user_id},
-			#{place_id})
+			#{userId},
+			#{placeId})
 	</insert>
 
 	<!-- 해당 유저가 해당 게시물 찜 여부 확인 -->
 	<select id="CheckPlaceLikes" parameterType="hashmap" resultType="integer">
 		SELECT like_check 
 		FROM likes 
-		WHERE place_id=#{place_id} and user_id=#{user_id}
+		WHERE place_id=#{placeId} and user_id=#{userId}
 	</select>
 
 	<!-- 테마별 여행지 정보 저장 -->
@@ -405,7 +405,7 @@
 	</update>
 
 	<!-- 게시글 검색 -->
-	<select id="searchPlace" parameterType="hashmap"
+	<select id="searchPlace" parameterType="getPlaceReq"
 		resultType="PlaceDTO">
 		SELECT 
 			replace(address,"null", '') as address, contentId,
@@ -422,16 +422,16 @@
 			ifnull(homepage,"제공정보 없음") as homepage, 
 			contenttypeid
 		FROM place 
-		WHERE ${colname} like #{colvalue} and image1 != "null"
-		LIMIT #{limitindex},#{limitcount}
+		WHERE ${colName} like #{colValue} and image1 != "null"
+		LIMIT #{limitIndex},#{limitCount}
 	</select>
 
 	<!-- 검색된 게시글 수 -->
-	<select id="searchPlaceCnt" parameterType="hashmap"
+	<select id="searchPlaceCnt" parameterType="getPlaceReq"
 		resultType="int">
 		SELECT count(*) 
 		FROM place 
-		WHERE ${colname} like #{colvalue} and image1 !="null"
+		WHERE ${colName} like #{colValue} and image1 !="null"
 	</select>
 
 	<insert id="copyTablePlace2" parameterType="PlaceDTO">
@@ -596,7 +596,7 @@
 		WHERE theme=#{theme} and image1 != "null" 
 	</select>
 
-	<select id="listThemePlaces" parameterType="hashmap"
+	<select id="listThemePlaces" parameterType="getListThemeReq"
 		resultMap="placecontentsmap">
 		SELECT 
 			c.contentId, 
@@ -639,7 +639,7 @@
 		WHERE p.contentId=#{c_contentId}
 	</select>
 
-	<select id="searchThemePlaces" parameterType="hashmap"
+	<select id="searchThemePlaces" parameterType="getPlaceReq"
 		resultMap="placecontentsmap">
 		SELECT 
 			c.contentId, 
@@ -647,15 +647,15 @@
 			title, 
 			image1 
 		FROM place p join contents c ON p.contentId = c.contentId
-		WHERE ${colname} like #{colvalue} and image1 is not null 
-		LIMIT #{limitindex},#{limitcount}
+		WHERE ${colName} like #{colValue} and image1 is not null 
+		LIMIT #{limitIndex},#{limitCount}
 	</select>
 
-	<select id="searchThemePlacesCnt" parameterType="hashmap"
+	<select id="searchThemePlacesCnt" parameterType="getPlaceReq"
 		resultType="int">
 		SELECT count(*) 
 		FROM place p join contents c ON p.contentId	= c.contentId
-		WHERE ${colname} like #{colvalue} and image1 != "null"
+		WHERE ${colName} like #{colValue} and image1 != "null"
 	</select>
 
 </mapper>

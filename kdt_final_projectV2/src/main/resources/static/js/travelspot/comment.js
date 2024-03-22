@@ -128,7 +128,7 @@ function reportComment(map){ //댓글 신고 기능
 				type: 'post',
 				success: function(response){
 					if(response=="false"){
-						location.href="/travelspot/comments_report?id="+id+"&contentId="+contentId;			
+						location.href="/travelspot/report?id="+id+"&contentId="+contentId;			
 					} else {
 						alert("이미 신고한 댓글입니다.");
 					}

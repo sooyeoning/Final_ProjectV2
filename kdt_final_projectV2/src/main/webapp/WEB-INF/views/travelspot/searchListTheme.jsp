@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,15 +12,15 @@
 
 <link href="/css/travelspot/import.css" rel="stylesheet" type="text/css" />
 <script
-	src="/js/travelspot/travelspot_list_theme.js"></script>
+	src="/js/travelspot/listTheme.js"></script>
 
 </head>
 <body>
 	<%@ include file="../home/header.jsp"%>
 
 	<%
-	String[] themes = new String[] { "alone", "couple", "friends", "family", "food" };
-	String[] themeName = new String[] { "#혼자", "#힐링", "#캠핑", "#가족","#먹거리" };
+	String[] themes = new String[] { "alone", "couple", "friends", "family" , "food"};
+	String[] themeName = new String[] { "#혼자", "#힐링", "#캠핑", "#가족" , "#먹거리"};
 	%>
 
 	<!-- 6개씩 배치-->
@@ -37,14 +38,19 @@
 	</div>
 	<br>
 
+	<% 
+	String searchword2 = String.valueOf(request.getAttribute("searchword")); 
+	searchword2 = searchword2.replaceAll("%", "");
+	%>
+	
 	<!-- 검색창 -->
 	<form action="/travelspot/themesearch" method="get" class="search-form">
-		<select name="item" class="search-item">
+		<select name="item" id="selectItem" class="search-item">
 			<option value="none" disabled>검색카테고리</option>
 			<option value="title">장소명</option>
 			<option value="address">주소</option>
-		</select> <input type="text" id="search-input" name="searchword"
-			class="search-input" placeholder="검색어를 입력하세요"> <input
+		</select> <br> <input type="text" id="search-input" name="searchword"
+			class="search-input" placeholder=<%=searchword2 %>> <input
 			type="submit" value="검색" class="search-button">
 	</form>
 
@@ -52,9 +58,9 @@
 		<c:forEach items="${placelist }" var="placeDTO">
 			<div class="item">
 				<!-- style="border: 0.3px solid #2463d3" -->
-				<img class="placeprofile" src=${placeDTO.image1} id=${placeDTO.contentId}>
-				<p class="placeName font_title" id=${placeDTO.contentId}>${placeDTO.title}</p>
-				<h1 class="placeLocation font_content" id=${placeDTO.contentId}></h1>
+				<img class="placeprofile" src="${placeDTO.image1}" id="${placeDTO.contentId}"/>
+				<p class="placeName font_title" id="${placeDTO.contentId}">${placeDTO.title}</p>
+				<h1 class="placeLocation font_content" id="${placeDTO.contentId}"></h1>
 				<p>${placeDTO.address}</p>
 				<br>
 				<p style="display: inline; float: left;">조회수 ${placeDTO.viewcnt }</p>
@@ -65,9 +71,11 @@
 	</div>
 
 	<%
-	int totalCnt = (Integer) request.getAttribute("totalCnt");
-	String theme = String.valueOf(request.getAttribute("theme"));
+	String searchCategory = (String) request.getAttribute("searchCategory");
+	String searchWord = (String) request.getAttribute("searchWord");
 	int currentPage = (Integer) request.getAttribute("page"); //현재 페이지 번호
+	int totalCnt = (Integer) request.getAttribute("totalCnt"); //총게시물수
+	
 	int countPage = 10; //한 화면에 출력될 페이지 수
 	int countList = 9; //한 화면에 출력될 게시물 수
 
@@ -90,35 +98,45 @@
 		<%
 		if ((currentBlock - 1) * countPage != 0) {
 		%>
-		<a
-			href="list_theme?theme=<%=theme%>&page=<%=(currentBlock - 1) * countPage%>">
-			<font size="3px">이전</font>
-		</a>
+		<c:url var="url" value="/travelspot/themesearch">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
+			<c:param name="page"
+				value="<%=String.valueOf((currentBlock - 1) * countPage)%>" />
+		</c:url>
+		<a href="<c:out value= "${url}" />"><font size="3px">이전</font></a>
 		<%
 		}
 		for (int i = startPage; i <= endPage; i++) {
+		String stringi = String.valueOf(i);
 		%>
-		<a href="list_theme?theme=<%=theme%>&page=<%=i%>"><font size="3px"><%=i%></font>
-			&nbsp;&nbsp;</a>
+		<c:url var="url" value="/travelspot/themesearch">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
+			<c:param name="page" value="<%=stringi%>" />
+		</c:url>
+		<a href="<c:out value= "${url}" />"><font size="3px"><%=i%>&nbsp;&nbsp;</font></a>
 		<%
 		}
 		if (endPage != totalPage) {
 		%>
-		<a
-			href="list_theme?theme=<%=theme%>&page=<%=currentBlock * countPage + 1%>">
-			<font size="3px">다음</font>
-		</a>
-	</div>
-	<%
-	}
-	%>
+		<c:url var="url" value="/travelspot/themesearch">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
+			<c:param name="page" value="<%=String.valueOf(currentBlock * countPage + 1)%>" />
+		</c:url>
+		<a href="<c:out value= "${url}" />"><font size="3px">다음</font></a>
 
+		<%
+		}
+		%>
+	</div>
 
 	<!-- 스크롤: 위치 수정 필요 -->
-	<div style="position: fixed; bottom: 3%; right: 10%;">
+	<div style="position: fixed; bottom: 1%; right: 1%;">
 		<a href="#"><img src="../img/top.png" width="20px" height="20px"></a>
 	</div>
 	
-</body>
 
+</body>
 </html>

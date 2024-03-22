@@ -20,39 +20,41 @@ $(document).ready(function() {
 
 	//좋아요 클릭
 	$("#like").click(function() {
-		if (document.getElementById('like_id').value == "null") {
-			alert("찜하기 기능은 로그인 후 사용가능합니다.")
-		} else {
-			$.ajax({
-				url: "/travelspot/post/likes?contentId=" + contentId,
-				type: 'get',
-				success: function(response) {
-					if ($.trim(response) == "success") {
-						alert("해당 관광지에 좋아요를 누르셨습니다.");
-					} else if ($.trim(response) == "alreadyliked") {
-						//취소
-						if (confirm("좋아요를 취소하시겠습니까?")) {
-							$.ajax({
-								url: "/travelspot/post/cancelLikes?contentId=" + contentId,
-								type: 'get',
-								success: function(response) {
-									if ($.trim(response) == "success") {
-										alert("정상적으로 취소되었습니다.");
-									}
+		$.ajax({
+			url: "/travelspot/likes?contentId=" + contentId,
+			type: 'get',
+			success: function(response) {
+				console.log("res:"+response)
+				if (response == "success") {
+					alert("해당 관광지에 좋아요를 누르셨습니다.");
+				} 
+				if(response=="needLogin"){
+					alert("찜하기 기능은 로그인 후 사용가능합니다.")
+				}
+				if (response == "alreadyliked") {
+					//취소
+					if (confirm("좋아요를 취소하시겠습니까?")) {
+						$.ajax({
+							url: "/travelspot/likes/cancel?contentId=" + contentId,
+							type: 'get',
+							success: function(response) {
+								if (response == "success") {
+									alert("정상적으로 취소되었습니다.");
 								}
-							})
-						}
+							}
+						})
 					}
+				}
 
-				},//success
-				error: function() { }
+			},//success
+			error: function() { }
 
 			})//ajax
-		}
+		
 	});
 	function imageAjax() {
 		$.ajax({
-			url: "/travelspot/post/images?contentId=" + contentId,
+			url: "/travelspot/images?contentId=" + contentId,
 			type: 'get',
 			success: function(placedto) {
 				$('div[class="result"]').html('<img class="images" src=' + placedto.image1 + '>');
@@ -64,7 +66,7 @@ $(document).ready(function() {
 
 	function infoAjax() {
 		$.ajax({
-			url: "/travelspot/post/info?contentId=" + contentId,
+			url: "/travelspot/info?contentId=" + contentId,
 			type: 'get',
 			success: function(placeDTO) {
 				//지도 
@@ -129,11 +131,7 @@ $(document).ready(function() {
         }
    
     });
-				
-				
-				
-				
-				//$('div[class="weather"]').html(mapx);
+		//$('div[class="weather"]').html(mapx);
 
 				//마커 표시
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

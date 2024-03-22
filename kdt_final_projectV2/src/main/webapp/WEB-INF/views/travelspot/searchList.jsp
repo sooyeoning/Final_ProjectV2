@@ -11,71 +11,74 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 
 <link href="/css/travelspot/import.css" rel="stylesheet" type="text/css" />
-<script
-	src="/js/travelspot/travelspot_list_theme.js"></script>
+<script src="/js/travelspot/travelspot_list.js"></script>
 
 </head>
 <body>
 	<%@ include file="../home/header.jsp"%>
 
 	<%
-	String[] themes = new String[] { "alone", "couple", "friends", "family" , "food"};
-	String[] themeName = new String[] { "#혼자", "#힐링", "#캠핑", "#가족" , "#먹거리"};
+	int[] ids = new int[] { 32, 6, 2, 5, 7, 31 };
+	String[] titles = new String[] { "강원", "부산", "인천", "광주", "울산", "경기" };
+	String[] engtitles = new String[] { "gangwon", "busan", "incheon", "gwangju", "ulsan", "gyeonggi" };
 	%>
 
 	<!-- 6개씩 배치-->
-	<div class="themeContainer">
+	<div class="regionContainer">
 		<%
-		for (int i = 0; i < themes.length; i++) {
+		for (int i = 0; i < ids.length; i++) {
 		%>
-		<div class="themeItem-list">
-			<a href="list_theme?theme=<%=themes[i]%>&page=1"
-				class="font_title themeName" id=<%=themes[i]%>><%=themeName[i]%></a>
+		<div class="regionItem-list">
+			<p class="font_content regionName" id=<%=ids[i]%>><%=titles[i]%></p>
+			<div class="box-list">
+				<a href="list?areaCode=<%=ids[i]%>&page=1"><img class="profile"
+					id=<%=ids[i]%> src="/img/<%=engtitles[i]%>.jpg"></a>
+			</div>
 		</div>
 		<%
 		}
 		%>
 	</div>
 	<br>
+	<hr class="hrmargin">
 
 	<% 
 	String searchword2 = String.valueOf(request.getAttribute("searchword")); 
 	searchword2 = searchword2.replaceAll("%", "");
 	%>
 	
-	<!-- 검색창 -->
-	<form action="/travelspot/themesearch" method="get" class="search-form">
-		<select name="item" id="selectItem" class="search-item">
+	<form action="/travelspot/search" method="get" class="search-form">
+		<select name="item" class="search-item">
 			<option value="none" disabled>검색카테고리</option>
 			<option value="title">장소명</option>
 			<option value="address">주소</option>
-		</select> <br> <input type="text" id="search-input" name="searchword"
+		</select> <input type="text" id="search-input" name="searchword"
 			class="search-input" placeholder=<%=searchword2 %>> <input
 			type="submit" value="검색" class="search-button">
 	</form>
-
+ 	
 	<div class="container">
+
 		<c:forEach items="${placelist }" var="placeDTO">
 			<div class="item">
 				<!-- style="border: 0.3px solid #2463d3" -->
-				<img class="placeprofile" src=${placeDTO.image1
-					}
-					id=${placeDTO.contentId}>
-				<p class="placeName font_title" id=${placeDTO.contentId}>${placeDTO.title}</p>
-				<h1 class="placeLocation font_content" id=${placeDTO.contentId}></h1>
+				<img class="placeprofile" src="${placeDTO.image1}" id="${placeDTO.contentId}"/>
+				<p class="placeName font_title" id="${placeDTO.contentId}">${placeDTO.title}</p>
+				<h1 class="placeLocation font_content" id="${placeDTO.contentId}"></h1>
 				<p>${placeDTO.address}</p>
 				<br>
 				<p style="display: inline; float: left;">조회수 ${placeDTO.viewcnt }</p>
 				<p style="display: inline; float: right;">좋아요 ${placeDTO.likecnt }</p>
 				<br>
+
 			</div>
 		</c:forEach>
+
 	</div>
 
 	<%
-	HashMap<String, Object> searchmap = (HashMap) request.getAttribute("searchmap");
-	String searchitem = (String) searchmap.get("searchitem");
-	String searchword = (String) searchmap.get("colvalue");
+	String searchCategory = (String) request.getAttribute("searchCategory");
+	String searchWord = (String) request.getAttribute("searchWord");
 	int totalCnt = (Integer) request.getAttribute("totalCnt"); //총게시물수
 	int currentPage = (Integer) request.getAttribute("page"); //현재 페이지 번호
 
@@ -101,21 +104,22 @@
 		<%
 		if ((currentBlock - 1) * countPage != 0) {
 		%>
-		<c:url var="url" value="/travelspot/themesearch">
-			<c:param name="item" value="<%=searchitem%>" />
-			<c:param name="searchword" value="<%=searchword%>" />
+		<c:url var="url" value="/travelspot/search">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
 			<c:param name="page"
 				value="<%=String.valueOf((currentBlock - 1) * countPage)%>" />
 		</c:url>
 		<a href="<c:out value= "${url}" />"><font size="3px">이전</font></a>
+
 		<%
 		}
 		for (int i = startPage; i <= endPage; i++) {
 		String stringi = String.valueOf(i);
 		%>
-		<c:url var="url" value="/travelspot/themesearch">
-			<c:param name="item" value="<%=searchitem%>" />
-			<c:param name="searchword" value="<%=searchword%>" />
+		<c:url var="url" value="/travelspot/search">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
 			<c:param name="page" value="<%=stringi%>" />
 		</c:url>
 		<a href="<c:out value= "${url}" />"><font size="3px"><%=i%>&nbsp;&nbsp;</font></a>
@@ -123,10 +127,11 @@
 		}
 		if (endPage != totalPage) {
 		%>
-		<c:url var="url" value="/travelspot/themesearch">
-			<c:param name="item" value="<%=searchitem%>" />
-			<c:param name="searchword" value="<%=searchword%>" />
-			<c:param name="page" value="<%=String.valueOf(currentBlock * countPage + 1)%>" />
+		<c:url var="url" value="/travelspot/search">
+			<c:param name="item" value="<%=searchCategory%>" />
+			<c:param name="searchword" value="<%=searchWord%>" />
+			<c:param name="page"
+				value="<%=String.valueOf(currentBlock * countPage + 1)%>" />
 		</c:url>
 		<a href="<c:out value= "${url}" />"><font size="3px">다음</font></a>
 
@@ -139,7 +144,7 @@
 	<div style="position: fixed; bottom: 1%; right: 1%;">
 		<a href="#"><img src="../img/top.png" width="20px" height="20px"></a>
 	</div>
-	
 
+	
 </body>
 </html>

@@ -15,7 +15,10 @@
 		<typeAlias type="travelspot.DTO.CommentsUserDTO" alias="commentsUserDTO" />
 		<typeAlias type="travelspot.DTO.ReportDTO" alias="reportDTO" />
 		<typeAlias type="travelspot.model.UpdateCommentReq" alias="updateCommentReq" />
-		
+		<typeAlias type="travelspot.model.CheckUserLikesReq" alias="checkUserLikesReq" />
+		<typeAlias type="travelspot.model.GetPlaceReq" alias="getPlaceReq" />
+		<typeAlias type="travelspot.model.GetListReq" alias="getListReq"/>
+		<typeAlias type="travelspot.model.GetListThemeReq" alias="getListThemeReq"/>
 		<typeAlias type="community.BoardDTO" alias="boarddto" />
 		<typeAlias type="community.CommentsDTO" alias="CommuCommentsDTO" />
 		

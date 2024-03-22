@@ -25,6 +25,7 @@ $(document).ready(function(){
 		location.href="/travelspot/post?contentId="+contentId//이동		
 	});
 	
+	
 	//마우스 올리면 색변경
 	$(".placeName").hover(function(){
 		$(this).css("color","#2463d3"); 
@@ -35,7 +36,6 @@ $(document).ready(function(){
 	
 	
 	//선택했다가 뒤로 되돌아오면 글자 색상 원래대로, 테두리 원래대로 변경 추가
-	
 	
 	
 })//ready end

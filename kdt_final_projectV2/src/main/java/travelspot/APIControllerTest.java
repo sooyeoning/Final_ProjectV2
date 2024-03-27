@@ -3,6 +3,7 @@ package travelspot;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,15 +62,24 @@ public class APIControllerTest {
 		return "ok";
 	}
 
-	@PostMapping("/api/test/place/detail")
-	public String apiTestPlaceDetail(@RequestParam("contentId") int contentId) throws Exception {
-		apiServiceImpl.getThemePlaceDetail(contentId);
-		return "ok";
-	}
-	
 	@PostMapping("/api/themeplace")
 	public String apiTestPlaceDetail2() throws Exception {
-		 apiServiceImpl.getThemeBasicInfo();
+		 apiServiceImpl.getThemeBasicInfo("place2", "contents2");
 		 return "ok";
+	}
+	
+	@GetMapping("/api/getInfoTest")
+	public void getBasicInfo() throws Exception {
+		apiServiceImpl.getBasicInfo(32, "place2");
+	}
+	
+	@GetMapping("/api/getInfoTest2")
+	public void getBasicInfo2() throws Exception {
+		apiServiceImpl.getThemeBasicInfo("place2", "contents2");
+	}
+	
+	@GetMapping("/api/copyTable")
+	public void copyTable() throws Exception {
+		apiServiceImpl.ScheduledTasksMethod();
 	}
 }

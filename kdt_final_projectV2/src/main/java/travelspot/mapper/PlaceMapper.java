@@ -8,24 +8,32 @@ import org.springframework.stereotype.Repository;
 import travelspot.DTO.ContentsDTO;
 import travelspot.DTO.PlaceContentsDTO;
 import travelspot.DTO.PlaceDTO;
+import travelspot.model.CheckPlaceContentsExistsReq;
+import travelspot.model.CheckPlaceExistsReq;
 import travelspot.model.CheckUserLikesReq;
 import travelspot.model.GetListReq;
 import travelspot.model.GetListThemeReq;
 import travelspot.model.GetPlaceReq;
+import travelspot.model.InsertThemeDetailReq;
+import travelspot.model.PostPlaceReq;
+import travelspot.model.PostThemeBasicInfoReq;
+import travelspot.model.UpdatePlaceReq;
+import travelspot.model.UpdateThemeDetailReq;
+import travelspot.model.UpdateThemePlaceReq;
 
 @Mapper // 매퍼 파일이야, @MapperScan 필요
 @Repository // 객체 생성, @ComponentScan 필요
 public interface PlaceMapper {
-	 public void insertPlaces(PlaceDTO placeDTO);
+	 public void insertPlaces(PostPlaceReq postPlaceReq);
 	 public List<PlaceDTO> listPlaces(GetListReq req);
 	 public PlaceDTO selectPlace(int contentId);
 	 public void plusViewCount(int contentId); //조회수 증가
-	 public String selectPlaceId(int contentId);
-	 public String selectContentId(int contentId);//contents 테이블 정보 유무 조회
+	 public String selectPlaceId(CheckPlaceExistsReq checkPlaceExistsReq);
+	 public String selectContentId(CheckPlaceContentsExistsReq checkPlaceContentsExistsReq);//contents 테이블 정보 유무 조회
 	 public int getTotalCnt(int areaCode);
 	 public int getTotalThemeCnt(String theme);
-	 public void insertThemeBasicInfo(PlaceDTO placeDTO);
-	 public void updateThemePlace(PlaceDTO placeDTO);
+	 public void insertThemeBasicInfo(PostThemeBasicInfoReq postThemeBasicInfoReq);
+	 public void updateThemePlace(UpdateThemePlaceReq updateThemePlaceReq);
 	 public List<PlaceContentsDTO> listThemePlaces(GetListThemeReq req);
 	 public PlaceContentsDTO getPlaceContentThemeDetail(int contentId);
 	 public PlaceDTO getPlaceThemeDetail(int id);
@@ -40,23 +48,23 @@ public interface PlaceMapper {
 	 public Integer cancelPlaceLike(int contentId);
 	 
 	 //
-	 public void insertPlaces2(PlaceDTO placeDTO);
-	 public void insertThemeBasicInfo2(PlaceDTO placeDTO);
-	 public void updateThemePlace2(PlaceDTO placeDTO);
+	 //public void insertPlaces2(PlaceDTO placeDTO);
+	// public void insertThemeBasicInfo2(PlaceDTO placeDTO);
+	 //public void updateThemePlace2(PlaceDTO placeDTO);
 	
-	 public String selectPlaceId2(int contentId);
-	 public String selectContentId2(int contentId);//contents 테이블 정보 유무 조회
+	// public String selectPlaceId2(CheckPlaceExistsReq checkPlaceExistsReq);
+	// public String selectContentId2(int contentId);//contents 테이블 정보 유무 조회
 	 public void copyTablePlace2(PlaceDTO placeDTO);
 	 public List<PlaceDTO> selectAllPlace();
 	 public List<ContentsDTO> selectAllContents();
-	 public void updatePlace2(PlaceDTO placeDTO);
+	 public void updatePlace(UpdatePlaceReq updatePlaceReq);
 
 	 public int getContentTypeId(int contentId);
 	 //
-	 public int updateThemeDetail(ContentsDTO contentsDTO2); 
-	 public int insertThemeDetail(ContentsDTO contentDTO2);
-	 public int updateThemeDetail2(ContentsDTO contentsDTO2); 
-	 public int insertThemeDetail2(ContentsDTO contentDTO2);
+	 public int updateThemeDetail(UpdateThemeDetailReq updateThemeDetailReq); 
+	 public int insertThemeDetail(InsertThemeDetailReq insertThemeDetailReq);
+	 //public int updateThemeDetail2(ContentsDTO contentsDTO2); 
+	 //public int insertThemeDetail2(ContentsDTO contentDTO2);
 	 public int copyThemeDetail(ContentsDTO contentDTO2);
 
 }

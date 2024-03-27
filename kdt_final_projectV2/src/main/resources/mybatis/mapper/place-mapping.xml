@@ -5,37 +5,15 @@
 <mapper namespace="travelspot.mapper.PlaceMapper">
 
 	<!-- 여행지 저장 -->
-	<insert id="insertPlaces" parameterType="placeDTO">
-		INSERT into place(
-			contentId, 
-			title, 
-			areaCode, 
-			image1,
-			image2, 
-			address, 
-			mapx,
-			mapy,
-			contents, 
-			viewcnt, 
-			writingtime)
-		VALUES(
-			#{contentId},
-			#{title},
-			#{areaCode}, 
-			#{image1},
-			0,
-			#{address},
-			#{mapx}, 
-			#{mapy},
-			null,
-			0,
-			now())
-	</insert>
-
-	<!-- 테이블2 여행지 저장 -->
-	<insert id="insertPlaces2" parameterType="placeDTO">
-		INSERT into place2(
-			contentId, 
+	<insert id="insertPlaces" parameterType="postPlaceReq">
+		INSERT 
+			<if test="tableName eq 'place'">
+			into place
+			</if>
+			<if test="tableName eq 'place2'">
+			into place2
+			</if>
+			(contentId, 
 			title, 
 			areaCode, 
 			image1,
@@ -63,21 +41,15 @@
 	<!-- 테이블2 내용 -> 테이블1 테이블 데이터 복사 INSERT INTO `복사 테이블` SELECT * FROM `원본 테이블` -->
 
 	<!-- 테마별 여행지 저장: 아이디, 장소명, 테마(기초 정보) -->
-	<insert id="insertThemeBasicInfo" parameterType="placeDTO">
-		INSERT into place(
-			contentId, 
-			title, 
-			theme)
-		VALUES(
-			#{contentId},
-			#{title},
-			#{theme})
-	</insert>
-
-	<!-- 2 테마별 여행지 저장 : 아이디, 장소명, 테마(기초 정보) -->
-	<insert id="insertThemeBasicInfo2" parameterType="placeDTO">
-		INSERT into place2(
-			contentId, 
+	<insert id="insertThemeBasicInfo" parameterType="postThemeBasicInfoReq">
+		INSERT 
+			<if test="tableName eq 'place'">
+				into place
+			</if>
+			<if test="tableName eq 'place2'">
+				into place2
+			</if>
+			(contentId, 
 			title, 
 			theme)
 		VALUES(
@@ -87,8 +59,14 @@
 	</insert>
 
 	<!-- 테마별 여행지 저장: 주소,이미지 (기본 정보) -->
-	<update id="updateThemePlace" parameterType="placeDTO">
-		UPDATE place
+	<update id="updateThemePlace" parameterType="updateThemePlaceReq">
+		UPDATE
+			<if test="tableName eq 'place'">
+				place
+			</if>
+			<if test="tableName eq 'place2'">
+				place2
+			</if>
 		SET
 			contentId=#{contentId}, 
 			title=#{title},
@@ -105,30 +83,18 @@
 	</update>
 
 	<!-- 2 테마별 여행지 저장: 주소,이미지 (기본 정보) -->
-	<update id="updateThemePlace2" parameterType="placeDTO">
-		UPDATE place2
+	<update id="updatePlace" parameterType="updatePlaceReq">
+		UPDATE 
+			<if test="tableName eq 'place'">
+				place
+			</if>
+			<if test="tableName eq 'place2'">
+				place2
+			</if>
 		SET
 			contentId=#{contentId}, 
 			title=#{title},
 			areaCode=#{areaCode},
-			image1=#{image1}, 
-			image2=0,
-			contenttypeid=#{contentTypeId},
-			address=#{address}, 
-			mapx=#{mapx},
-			mapy=#{mapy}, 
-			contents=#{contents},
-			homepage=#{homepage}
-		WHERE contentId=#{contentId}
-	</update>
-
-	<!-- 2 테마별 여행지 저장: 주소,이미지 (기본 정보) -->
-	<update id="updatePlace2" parameterType="placeDTO">
-		UPDATE place2
-		SET
-			contentId=#{contentId}, 
-			title=#{title},
-			areaCode=#{areaCode1},
 			image1=#{image1}, 
 			image2=0,
 			address=#{address}, 
@@ -190,27 +156,30 @@
 		WHERE contentId=#{contentId}
 	</select>
 
-	<!-- 여행지 게시글 아이디 있는지 조희 -->
-	<select id="selectPlaceId" parameterType="int" resultType="String">
-		SELECT exists(select*from place where contentId=#{contentId})
+	<!-- 2 여행지 게시글 아이디 있는지 조희 -->
+	<select id="selectPlaceId" parameterType="checkPlaceExistsReq"
+		resultType="String">
+		SELECT exists(select*
+		<if test="tableName eq 'place2'">
+			from place2
+		</if>
+		<if test="tableName eq 'place'">
+			from place
+		</if>
+		where contentId=#{contentId})
 	</select>
 
 	<!-- 2 여행지 게시글 아이디 있는지 조희 -->
-	<select id="selectPlaceId2" parameterType="int"
+	<select id="selectContentId" parameterType="checkPlaceContentsExistsReq"
 		resultType="String">
-		SELECT exists(select*from place2 where contentId=#{contentId})
-	</select>
-
-	<!-- 여행지 게시글 아이디 있는지 조희 -->
-	<select id="selectContentId" parameterType="int"
-		resultType="String">
-		SELECT exists(select*from contents where contentId=#{contentId})
-	</select>
-
-	<!-- 2 여행지 게시글 아이디 있는지 조희 -->
-	<select id="selectContentId2" parameterType="int"
-		resultType="String">
-		SELECT exists(select*from contents2 where contentId=#{contentId})
+		SELECT exists(select* 
+		<if test="tableName eq 'contents2'">
+			from contents2
+		</if>
+		<if test="tableName eq 'contents'">
+			from contents
+		</if>
+		where contentId=#{contentId})
 	</select>
 
 	<!-- 게시글 찜 -->
@@ -254,9 +223,15 @@
 	</select>
 
 	<!-- 테마별 여행지 정보 저장 -->
-	<insert id="insertThemeDetail2" parameterType="contentsDTO">
-		INSERT INTO contents2(
-			contentId,
+	<insert id="insertThemeDetail" parameterType="insertThemeDetailReq">
+		INSERT INTO 
+			<if test="tableName eq 'contents'">
+		 		contents
+			</if>
+			<if test="tableName eq 'contents2'">
+				contents2
+			</if>
+			(contentId,
 			infocenter, 
 			chkbabycarriage, 
 			chkcreditcard,
@@ -292,69 +267,14 @@
 	</insert>
 
 	<!-- 2 테마별 여행지 정보 저장(관광지) -->
-	<update id="updateThemeDetail2" parameterType="contentsDTO">
-		UPDATE contents2
-		SET 
-			contentId=#{contentId},
-			infocenter=#{infocenter},
-			chkbabycarriage=#{chkbabycarriage},
-			chkcreditcard=#{chkcreditcard},
-			chkpet=#{chkpet}, 
-			kidsfacility=#{kidsfacility}, 
-			restdate=#{restdate},
-			usetime=#{usetime}, 
-			discountinfo=#{discountinfo},
-			firstmenu=#{firstmenu}, 
-			reservationinfo=#{reservationinfo},
-			takeout=#{takeout}, 
-			parking=#{parking}, 
-			parkingfee=#{parkingfee},
-			accomcount=#{accomcount}, 
-			usefee=#{usefee}
-		WHERE contentId=#{contentId}
-	</update>
-
-	<!-- 테마별 여행지 정보 저장 -->
-	<insert id="insertThemeDetail" parameterType="contentsDTO">
-		INSERT INTO contents(
-			contentId,
-			infocenter, 
-			chkbabycarriage, 
-			chkcreditcard,
-			chkpet, 
-			kidsfacility, 
-			restdate, 
-			usetime, 
-			discountinfo, 
-			firstmenu,
-			reservationinfo, 
-			takeout, 
-			parking, 
-			parkingfee, 
-			accomcount, 
-			usefee)
-		values(
-			#{contentId}, 
-			#{infocenter},
-			#{chkbabycarriage},
-			#{chkcreditcard}, 
-			#{chkpet},
-			#{kidsfacility}, 
-			#{restdate}, 
-			#{usetime}, 
-			#{discountinfo},
-			#{firstmenu}, 
-			#{reservationinfo}, 
-			#{takeout}, 
-			#{parking},
-			#{parkingfee}, 
-			#{accomcount}, 
-			#{usefee})
-	</insert>
-
-	<!-- 2 테마별 여행지 정보 저장(관광지) -->
-	<update id="updateThemeDetail" parameterType="contentsDTO">
-		UPDATE contents
+	<update id="updateThemeDetail" parameterType="updateThemeDetailReq">
+		UPDATE 
+			<if test="tableName eq 'contents'">
+		 		contents
+			</if>
+			<if test="tableName eq 'contents2'">
+				contents2
+			</if>
 		SET 
 			contentId=#{contentId},
 			infocenter=#{infocenter},

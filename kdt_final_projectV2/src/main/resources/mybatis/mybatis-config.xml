@@ -19,6 +19,15 @@
 		<typeAlias type="travelspot.model.GetPlaceReq" alias="getPlaceReq" />
 		<typeAlias type="travelspot.model.GetListReq" alias="getListReq"/>
 		<typeAlias type="travelspot.model.GetListThemeReq" alias="getListThemeReq"/>
+		<typeAlias type="travelspot.model.CheckPlaceExistsReq" alias="checkPlaceExistsReq"/>
+		<typeAlias type="travelspot.model.CheckPlaceContentsExistsReq" alias="checkPlaceContentsExistsReq"/>
+		<typeAlias type="travelspot.model.UpdateThemeDetailReq" alias="updateThemeDetailReq"/>
+		<typeAlias type="travelspot.model.InsertThemeDetailReq" alias="insertThemeDetailReq"/>
+		<typeAlias type="travelspot.model.PostPlaceReq" alias="postPlaceReq"/>
+		<typeAlias type="travelspot.model.PostThemeBasicInfoReq" alias="postThemeBasicInfoReq"/>
+		<typeAlias type="travelspot.model.UpdateThemePlaceReq" alias="updateThemePlaceReq"/>
+		<typeAlias type="travelspot.model.UpdatePlaceReq" alias="updatePlaceReq"/>
+		
 		<typeAlias type="community.BoardDTO" alias="boarddto" />
 		<typeAlias type="community.CommentsDTO" alias="CommuCommentsDTO" />
 		

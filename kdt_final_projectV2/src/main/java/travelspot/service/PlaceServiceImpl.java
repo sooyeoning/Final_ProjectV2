@@ -1,6 +1,5 @@
 package travelspot.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,18 @@ import travelspot.DTO.ContentsDTO;
 import travelspot.DTO.PlaceContentsDTO;
 import travelspot.DTO.PlaceDTO;
 import travelspot.mapper.PlaceMapper;
+import travelspot.model.CheckPlaceContentsExistsReq;
+import travelspot.model.CheckPlaceExistsReq;
 import travelspot.model.CheckUserLikesReq;
 import travelspot.model.GetListReq;
 import travelspot.model.GetListThemeReq;
 import travelspot.model.GetPlaceReq;
+import travelspot.model.InsertThemeDetailReq;
+import travelspot.model.PostPlaceReq;
+import travelspot.model.PostThemeBasicInfoReq;
+import travelspot.model.UpdatePlaceReq;
+import travelspot.model.UpdateThemeDetailReq;
+import travelspot.model.UpdateThemePlaceReq;
 
 @Service
 public class PlaceServiceImpl {
@@ -41,16 +48,16 @@ public class PlaceServiceImpl {
 		return placemapper.getTotalThemeCnt(theme);
 	}
 
-	public void insertThemeBasicInfo(PlaceDTO placeDTO) {
-		placemapper.insertThemeBasicInfo(placeDTO);
+	public void insertThemeBasicInfo(PostThemeBasicInfoReq postThemeBasicInfoReq) {
+		placemapper.insertThemeBasicInfo(postThemeBasicInfoReq);
 	}
 
-	public void updateThemePlace(PlaceDTO placeDTO) {
-		placemapper.updateThemePlace(placeDTO);
+	public void updateThemePlace(UpdateThemePlaceReq updateThemePlaceReq) {
+		placemapper.updateThemePlace(updateThemePlaceReq);
 	}
 
-	public String selectPlaceId(int contentId) {
-		return placemapper.selectPlaceId(contentId);
+	public String selectPlaceId(CheckPlaceExistsReq checkPlaceExistsReq) {
+		return placemapper.selectPlaceId(checkPlaceExistsReq);
 	}
 
 	public PlaceContentsDTO getPlaceContentThemeDetail(int contentId) {
@@ -101,28 +108,8 @@ public class PlaceServiceImpl {
 		return placemapper.cancelPlaceLike(contentId);
 	}
 
-	public String selectContentId(int contentId) {
-		return placemapper.selectContentId(contentId);
-	}
-
-	public void insertPlaces2(PlaceDTO placeDTO) {
-		placemapper.insertPlaces2(placeDTO);
-	}
-
-	public void insertThemeBasicInfo2(PlaceDTO placeDTO) {
-		placemapper.insertThemeBasicInfo2(placeDTO);
-	}
-
-	public void updateThemePlace2(PlaceDTO placeDTO) {
-		placemapper.updateThemePlace2(placeDTO);
-	}
-
-	public String selectPlaceId2(int contentId) {
-		return placemapper.selectPlaceId2(contentId);
-	}
-
-	public String selectContentId2(int contentId) {
-		return placemapper.selectContentId2(contentId);
+	public String selectContentId(CheckPlaceContentsExistsReq checkPlaceContentsExistsReq) {
+		return placemapper.selectContentId(checkPlaceContentsExistsReq);
 	}
 
 	public void copyTablePlace2(PlaceDTO placeDTO) {
@@ -137,36 +124,55 @@ public class PlaceServiceImpl {
 		return placemapper.selectAllContents();
 	}
 
-	public void updatePlace2(PlaceDTO placeDTO) {
-		placemapper.updatePlace2(placeDTO);
+	public void updatePlace(UpdatePlaceReq updatePlaceReq) {
+		placemapper.updatePlace(updatePlaceReq);
 	}
 
 	public int getContentTypeId(int contentId) {
 		return placemapper.getContentTypeId(contentId);
 	}
 
-	public int updateThemeDetail(ContentsDTO contentsDTO2) {
-		return placemapper.updateThemeDetail(contentsDTO2);
+	public int updateThemeDetail(UpdateThemeDetailReq updateThemeDetailReq) {
+		return placemapper.updateThemeDetail(updateThemeDetailReq);
 	}
 
-	public int insertThemeDetail(ContentsDTO contentDTO2) {
-		return placemapper.insertThemeDetail(contentDTO2);
+	public int insertThemeDetail(InsertThemeDetailReq insertThemeDetailReq) {
+		return placemapper.insertThemeDetail(insertThemeDetailReq);
 	}
 
 	public int copyThemeDetail(ContentsDTO contentDTO2) {
 		return placemapper.copyThemeDetail(contentDTO2);
 	}
 
-	public void insertPlaces(PlaceDTO placeDTO) {
-		placemapper.insertPlaces(placeDTO);
+	public void insertPlaces(PostPlaceReq postPlaceReq) {
+		placemapper.insertPlaces(postPlaceReq);
 	}
 
-	public int updateThemeDetail2(ContentsDTO contentsDTO2) {
+	/*public int updateThemeDetail2(ContentsDTO contentsDTO2) {
 		return placemapper.updateThemeDetail2(contentsDTO2);
 	}
 
 	public int insertThemeDetail2(ContentsDTO contentDTO2) {
 		return placemapper.insertThemeDetail2(contentDTO2);
-	}
+	}*/
+	/*public void insertPlaces2(PlaceDTO placeDTO) {
+	placemapper.insertPlaces2(placeDTO);
+}
+
+public void insertThemeBasicInfo2(PlaceDTO placeDTO) {
+	placemapper.insertThemeBasicInfo2(placeDTO);
+}
+
+public void updateThemePlace2(PlaceDTO placeDTO) {
+	placemapper.updateThemePlace2(placeDTO);
+}*/
+
+/*public String selectPlaceId2(CheckPlaceExistsReq checkPlaceExistsReq) {
+	return placemapper.selectPlaceId2(checkPlaceExistsReq);
+}
+
+public String selectContentId2(int contentId) {
+	return placemapper.selectContentId2(contentId);
+}*/
 
 }

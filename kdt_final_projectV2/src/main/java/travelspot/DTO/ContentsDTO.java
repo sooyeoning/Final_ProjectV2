@@ -1,5 +1,9 @@
 package travelspot.DTO;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +31,34 @@ public class ContentsDTO {
 	private String accomcount; 		// 수용인원
 	private String usefee; 			// 입장비용
 
+	public ContentsDTO getThemeContentsDTO(Element e, int placeContentTypeId) {
+		ContentsDTO contentsdto = new ContentsDTO();
+		if(placeContentTypeId == 12) {
+			contentsdto = new ContentsTourDTO().getContentsTourDTO(e);
+		}
+		if (placeContentTypeId == 39) {
+			contentsdto = new ContentsFoodDTO().getContentsFoodDTO(e);
+		}
+		if (placeContentTypeId == 14) {
+			contentsdto = new ContentsCultureDTO().getContentsCultureDTO(e);
+		}
+		if (placeContentTypeId == 28) {
+			contentsdto = new ContentsLeportsDTO().getContentsLeportsDTO(e);
+		}
+		return contentsdto;
+	}
+	
+	public static String getValue(String tag, Element element) {
+		// 태그 이름이 매개변수인 노드를 찾아 > 찾은 노드에서 n번째 노드에 접근 > n번째 노드 안에 정보에 접근할 수 있는 nodelist
+		String result = null;
+
+		if (element.getElementsByTagName(tag).item(0).getChildNodes() != null) {
+			NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+			// Node node = (Node) nodes.item(0);
+			if ((Node) nodes.item(0) != null) {
+				result = ((Node) nodes.item(0)).getNodeValue();
+			}
+		}
+		return result;
+	}
 }

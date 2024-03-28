@@ -20,12 +20,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import lombok.extern.slf4j.Slf4j;
-import travelspot.DTO.ContentsCultureDTO;
 import travelspot.DTO.ContentsDTO;
 import travelspot.DTO.PlaceDTO;
-import travelspot.DTO.ContentsFoodDTO;
-import travelspot.DTO.ContentsLeportsDTO;
-import travelspot.DTO.ContentsTourDTO;
 import travelspot.mapper.PlaceMapper;
 import travelspot.model.CheckPlaceExistsReq;
 import travelspot.model.InsertThemeDetailReq;
@@ -325,25 +321,10 @@ public class APIServiceImpl {
 			if (node.getNodeType() == Node.ELEMENT_NODE) { // 자식 노드가 요소일 경우에만 실행한다
 				Element e = (Element) node;
 
-				ContentsDTO contentsdto;
-
-				if (placeContentTypeId == 12) {
-					contentsdto = getContentType_12(e);
-					ThemeDetail(placeContentId, contentsdto, contentsTableName);
-				}
-				if (placeContentTypeId == 39) {
-					contentsdto = getContentType_39(e);
-					ThemeDetail(placeContentId, contentsdto, contentsTableName);
-				}
-				if (placeContentTypeId == 14) {
-					contentsdto = getContentType_14(e);
-					ThemeDetail(placeContentId, contentsdto, contentsTableName);
-				}
-				if (placeContentTypeId == 28) {
-					contentsdto = getContentType_28(e);
-					ThemeDetail(placeContentId, contentsdto, contentsTableName);
-				}
-
+				ContentsDTO contentsdto = new ContentsDTO();
+				contentsdto = contentsdto.getThemeContentsDTO(e,placeContentTypeId);
+				ThemeDetail(placeContentId, contentsdto, contentsTableName);
+				
 			} // if문
 
 		}
@@ -388,85 +369,7 @@ public class APIServiceImpl {
 		String result = sb.toString();
 	}
 
-	public ContentsDTO getContentType_14(Element e) { // 문화시설
-
-		Integer contentId = Integer.parseInt(getValue("contentid", e));
-		String accomcount = getValue("accomcountculture", e); // 문의 및 안내
-		String chkbabycarriage = getValue("chkbabycarriageculture", e); // 유모차 대여
-		String chkcreditcard = getValue("chkcreditcardculture", e);
-		String chkpet = getValue("chkpetculture", e);
-		String infocenter = getValue("infocenterculture", e);
-		String parking = getValue("parkingculture", e);
-		String parkingfee = getValue("parkingfee", e); // 문의 및 안내
-		String restdate = getValue("restdateculture", e); // 유모차 대여
-		String usefee = getValue("usefee", e);
-		String discountinfo = getValue("discountinfo", e);
-		String usetime = getValue("usetimeculture", e);
-
-		ContentsDTO Contentsdto = new ContentsCultureDTO(contentId, infocenter, chkbabycarriage, chkcreditcard, chkpet,
-				accomcount, parking, parkingfee, restdate, usefee, discountinfo, usetime);
-
-		return Contentsdto;
-	}
-
-	public ContentsDTO getContentType_28(Element e) { // 레포츠
-
-		// null체크
-		Integer contentId = Integer.parseInt(getValue("contentid", e));
-		String infocenter = getValue("infocenterleports", e);
-		String chkbabycarriage = getValue("chkbabycarriageleports", e);
-		String chkcreditcard = getValue("chkcreditcardleports", e);
-		String chkpet = getValue("chkpetleports", e);
-		String restdate = getValue("restdateleports", e);
-		String usetime = getValue("usetimeleports", e);
-		String accomcount = getValue("accomcountleports", e);
-		String usefee = getValue("usefeeleports", e);
-		String parkingfee = getValue("parkingfeeleports", e);
-		String reservationinfo = getValue("reservation", e);
-
-		ContentsDTO Contentsdto = new ContentsLeportsDTO(contentId, infocenter, chkbabycarriage, chkcreditcard, chkpet,
-				restdate, usetime, accomcount, usefee, parkingfee, parkingfee, reservationinfo);
-
-		return Contentsdto;
-	}
-
-	public ContentsDTO getContentType_12(Element e) { // 관광지
-
-		// null체크
-		Integer contentId = Integer.parseInt(getValue("contentid", e));
-		String infocenter = getValue("infocenter", e); // 문의 및 안내
-		String chkbabycarriage = getValue("chkbabycarriage", e); // 유모차 대여
-		String chkpet = getValue("chkpet", e);
-		String chkcreditcard = getValue("chkcreditcard", e);
-		String restdate = getValue("restdate", e);
-		String usetime = getValue("usetime", e);
-
-		ContentsDTO Contentsdto = new ContentsTourDTO(contentId, infocenter, chkbabycarriage, chkcreditcard, chkpet,
-				restdate, usetime);
-		return Contentsdto;
-	}
-
-	public ContentsDTO getContentType_39(Element e) { // 식당
-
-		// null체크
-		Integer contentId = Integer.parseInt(getValue("contentid", e));
-		String infocenter = getValue("infocenterfood", e); // 문의 및 안내
-		String chkcreditcard = getValue("chkcreditcardfood", e); // 신용카드
-		String discountinfo = getValue("discountinfofood", e); // 할인정보
-		String firstmenu = getValue("firstmenu", e); // 대표메뉴
-		String reservationinfo = getValue("reservationfood", e); // 예약안내
-		String restdate = getValue("restdatefood", e);// 쉬는날
-		String takeout = getValue("packing", e); // 포장가능
-		String parking = getValue("parkingfood", e); // 주차시설
-		String kidsfacility = getValue("kidsfacility", e);// 어린이놀이방여부
-		String usetime = getValue("opentimefood", e);
-
-		ContentsDTO Contentsdto = new ContentsFoodDTO(contentId, infocenter, kidsfacility, chkcreditcard, restdate,
-				usetime, discountinfo, firstmenu, reservationinfo, takeout, parking);
-		return Contentsdto;
-	}
-
-	private static String getValue(String tag, Element element) {
+	public static String getValue(String tag, Element element) {
 		// 태그 이름이 매개변수인 노드를 찾아 > 찾은 노드에서 n번째 노드에 접근 > n번째 노드 안에 정보에 접근할 수 있는 nodelist
 		String result = null;
 
